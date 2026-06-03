@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Commercial concrete floor placeholder</title>
+  <desc id="desc">Placeholder illustration for a polished or coated commercial floor.</desc>
+  <rect width="1200" height="900" fill="#2c2c2c"/>
+  <rect x="78" y="78" width="1044" height="744" fill="#f6f1e8"/>
+  <path d="M78 822 L390 515 L805 588 L1122 280 V822 Z" fill="#d7d1c7"/>
+  <path d="M78 822 L1122 822 L1122 720 L685 545 Z" fill="#d96b1d" fill-opacity=".18"/>
+  <text x="112" y="144" fill="#161616" font-family="Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="6">
+    COMMERCIAL FLOOR
+  </text>
+  <text x="112" y="202" fill="#161616" font-family="Arial, sans-serif" font-size="24" letter-spacing="2">
+    Placeholder for warehouse, showroom, office, retail, or hospitality slab
+  </text>
+</svg>

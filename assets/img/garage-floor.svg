@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Garage floor coating placeholder</title>
+  <desc id="desc">Placeholder illustration for an organized garage with a coated concrete floor.</desc>
+  <rect width="1200" height="900" fill="#1f2327"/>
+  <rect x="76" y="76" width="1048" height="748" fill="#ece7df"/>
+  <rect x="188" y="190" width="824" height="250" fill="#d7d1c7"/>
+  <rect x="240" y="240" width="120" height="120" fill="#161616" fill-opacity=".22"/>
+  <rect x="410" y="240" width="120" height="120" fill="#161616" fill-opacity=".22"/>
+  <rect x="580" y="240" width="120" height="120" fill="#161616" fill-opacity=".22"/>
+  <rect x="750" y="240" width="120" height="120" fill="#161616" fill-opacity=".22"/>
+  <path d="M76 790 L420 570 L810 635 L1124 405 V824 H76 Z" fill="#b5bcc3"/>
+  <text x="118" y="150" fill="#161616" font-family="Arial, sans-serif" font-size="50" font-weight="700" letter-spacing="6">
+    GARAGE FLOOR
+  </text>
+  <text x="118" y="208" fill="#161616" font-family="Arial, sans-serif" font-size="24" letter-spacing="2">
+    Placeholder for a flake epoxy or solid-color garage floor transformation
+  </text>
+</svg>
