@@ -1857,6 +1857,16 @@ ol {
     padding-top: 8.4rem;
   }
 
+  .hero--home h1 {
+    font-size: clamp(2.4rem, 9vw, 3.1rem); /* ~41px at 390px vs ~66px before */
+    line-height: 1.05;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(2.4rem, 9vw, 3.1rem); /* same fix for all service page heroes */
+    line-height: 1.05;
+  }
+
   .hero__content--solo {
     min-height: auto;
   }
