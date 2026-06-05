@@ -706,6 +706,8 @@ ol {
 }
 
 .city-card__name {
+  position: relative;
+  z-index: 2;
   font-family: "Bebas Neue", sans-serif;
   font-size: 1.5rem;
   letter-spacing: 0.06em;
@@ -714,6 +716,8 @@ ol {
 }
 
 .city-card__meta {
+  position: relative;
+  z-index: 2;
   font-family: "Barlow Semi Condensed", sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
