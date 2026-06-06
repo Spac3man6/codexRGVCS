@@ -1,17 +1,18 @@
 # Content Replacement Guide
 
-This guide lists the placeholder content still present in the rebuild and what should replace it before launch.
+This guide lists the remaining placeholder or provisional content in the rebuild and what should replace it before launch.
 
 ## Site-Wide Placeholder Copy
 
-- Phone number: `(956) 502-9635`
-  - Confirm before launch
-- Phone href: `+19565029635`
-  - Confirm before launch
-- Email: `hello@rgvconcretestain.com`
-  - Replace if the final launch inbox differs
-- Demo form status messaging
-  - Replace after forms are connected to the production CRM, email inbox, or automation workflow
+- Phone number: `(956) 502-9365`
+  - Current launch value; re-confirm only if the owner reports a change.
+- Phone href: `+19565029365`
+  - Current launch value; keep it aligned with the visible phone number.
+- Email: `rgvconcretestain@gmail.com`
+  - Current launch value; replace only if a monitored branded inbox is created.
+- Form behavior
+  - Lead forms submit through the Formspree endpoint configured in `assets/js/site.js`.
+  - Run a real end-to-end submission on the deployed site after every form endpoint or hosting change.
 
 ## Site-Wide Placeholder Images
 
@@ -55,7 +56,7 @@ This guide lists the placeholder content still present in the rebuild and what s
 - `about.html`
   - Team/process story is generic and should be updated with real company history, owner viewpoint, crew info, or differentiators
 - `contact.html`
-  - The embedded map is a broad regional placeholder and should be replaced with the final preferred location or service-area map setup
+  - The embedded map points to the Pharr address; replace only if the business prefers a broader service-area map or a different public map presentation
 - `case-studies.html`
   - Every case study card is currently a template and must be replaced with actual project names, cities, finish systems, before/after facts, and approved photography
 
@@ -66,7 +67,7 @@ This guide lists the placeholder content still present in the rebuild and what s
 
 ## Recommended Launch Replacements
 
-1. Replace phone, email, and map details first so lead flow is real.
+1. Verify live Formspree delivery on the deployed domain so lead flow is proven.
 2. Replace hero and gallery imagery next because the site is intentionally gallery-first.
 3. Replace case study template content with actual approved project stories.
 4. Revisit service pages to add any real warranty, crew, or schedule claims only after they are confirmed.

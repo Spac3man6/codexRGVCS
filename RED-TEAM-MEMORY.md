@@ -2,6 +2,13 @@
 
 Short continuity log for client-sensitive asset decisions, external model reviews, and next actions. Keep this file brief so future sessions can recover context without replaying the whole thread.
 
+## Current Operational Notes — 2026-06-06
+
+- Current launch contact values are `(956) 502-9365`, `rgvconcretestain@gmail.com`, `810 W Dipper Ave, Pharr, TX 78577`, and Mon-Fri 7:00 AM to 5:00 PM.
+- Lead forms are no longer demo/localStorage forms. They submit to the Formspree endpoint configured in `assets/js/site.js`.
+- The remaining red-team concern is visual proof, not form plumbing: true staining photos, team/process photos, before-and-after pairs, and a permanent hero remain the biggest trust gaps.
+- Older notes below are historical context. Treat any old references to `(956) 502-9635`, `hello@rgvconcretestain.com`, demo forms, or unresolved map/address decisions as stale unless reconfirmed by current files.
+
 ## 2026-04-30
 
 ### Client Question
@@ -60,12 +67,11 @@ The Antigravity summary agrees with our core position:
 - The packet is useful but not as complete as the original prompt requested: it does not include a full asset-by-asset decision matrix.
 - "No filler" should not mean empty or weak sections everywhere; branded abstracts or text-only sections can work temporarily, but must be visually reviewed so the site does not feel unfinished.
 - If generated imagery is used, it should be treated as temporary/internal and should not represent real work.
-- Phone number has been updated to `(956) 502-9635`; email, map preference, and form handling remain launch blockers separate from photography.
+- Phone/email/map/form handling were later updated for launch. The remaining blocker from this note is photography/proof quality.
 
 ### Next Actions
 
-1. Import or paste the full `decision_packet.md` into the workspace.
-2. Compare the decision packet against `ASSET-AUDIT.md` and current page slots.
-3. Update `CLIENT-ASSET-REQUESTS.md` if the "Top Four" ask becomes the official client request.
-4. Replace or remove misleading placeholders only after slot-specific asset decisions are confirmed.
-5. Re-run tests and browser visual QA after any asset/content integration.
+1. Compare any new asset decisions against `ASSET-AUDIT.md` and current page slots.
+2. Update `CLIENT-ASSET-REQUESTS.md` if the "Top Four" ask becomes the official client request.
+3. Replace or remove misleading placeholders only after slot-specific asset decisions are confirmed.
+4. Re-run tests and browser visual QA after any asset/content integration.

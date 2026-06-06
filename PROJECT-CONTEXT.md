@@ -1,6 +1,6 @@
 # Project Context
 
-Last updated: April 21, 2026
+Last updated: June 6, 2026
 
 This file is the canonical project handoff and thread-recovery reference for the RGV Concrete Stain rebuild.
 
@@ -8,9 +8,9 @@ This file is the canonical project handoff and thread-recovery reference for the
 
 - Project: static multi-page marketing site rebuild for RGV Concrete Stain
 - Stack: HTML, CSS, and vanilla JavaScript only
-- Workspace root: `/Users/victoralonso/Repos/Codex RGVCS`
+- Primary workspace root: `/Users/victoralonso/Repos/Codex RGVCS`
 - Current preview URL: `http://127.0.0.1:8000/`
-- Repo note: this workspace is not currently inside a Git repository
+- Repo note: the project is now tracked in GitHub, with `main` synced to `origin/main`
 
 ## Core Constraint
 
@@ -18,7 +18,7 @@ Continue from the existing scaffold. Do not restart from scratch. Preserve and e
 
 ## What Already Exists
 
-- Shared header, footer, mobile nav, sticky CTA, modal, accordion, gallery modal, and demo form handling in `assets/js/site.js`
+- Shared header, footer, mobile nav, sticky CTA, modal, accordion, gallery modal, and Formspree lead-form handling in `assets/js/site.js`
 - Shared visual system and layout primitives in `assets/css/styles.css`
 - Full static page set:
   - `index.html`
@@ -47,6 +47,8 @@ Continue from the existing scaffold. Do not restart from scratch. Preserve and e
 
 - The multi-page site is built and passes the current regression suite
 - Shared scaffold behavior is preserved
+- Forms submit to the Formspree endpoint configured in `assets/js/site.js`
+- Current launch contact details are `(956) 502-9365`, `rgvconcretestain@gmail.com`, `810 W Dipper Ave, Pharr, TX 78577`, and Mon-Fri 7:00 AM to 5:00 PM
 - Client assets have been partially normalized into `assets/img/site/`
 - Antigravity-only external imagery handoff is now documented for the missing-image categories
 - Stronger real-ish support exists for:
@@ -121,6 +123,7 @@ Current regression coverage includes:
 - local file references
 - placeholder replacement comments
 - no raw `assets/client-assets/` references in production pages
+- Formspree lead-form wiring
 - shared JS syntax
 - sitemap XML validity
 - client asset drop presence
