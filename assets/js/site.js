@@ -183,8 +183,7 @@ function renderEstimateModal() {
             <span class="eyebrow">Discuss Your Project</span>
             <h2 id="estimate-modal-title">Get a Valley-Sized Estimate</h2>
             <p>
-              Tell us what you are building or refinishing. This demo stores submissions locally so the launch site
-              can later connect to the final CRM or form endpoint.
+              Tell us about your project and we'll follow up with a custom estimate.
             </p>
           </div>
           <form class="lead-form" data-lead-form="modal-estimate">

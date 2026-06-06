@@ -22,14 +22,14 @@
     <meta property="og:image:alt" content="Client-supplied flake floor image" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#161616" />
-    <link rel="preload" as="image" href="assets/img/site/garage/garage-flake-interior.jpg" />
+    <link rel="preload" as="image" href="/assets/img/site/garage/garage-flake-interior.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&amp;family=Barlow+Semi+Condensed:wght@600;700&amp;family=Bebas+Neue&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -70,7 +70,10 @@
       <main id="main-content">
         <section class="page-hero">
           <div class="page-hero__media" aria-hidden="true">
-            <img class="page-hero__image" src="assets/img/site/garage/garage-flake-interior.jpg" alt="" width="1200" height="1600" />
+            <picture style="display:block;width:100%;height:100%">
+              <source srcset="/assets/img/site/garage/garage-flake-interior.webp" type="image/webp" />
+            <img class="page-hero__image" src="/assets/img/site/garage/garage-flake-interior.jpg" alt="" width="1200" height="1600" />
+            </picture>
           </div>
           <div class="container-wide page-hero__inner">
             <div class="page-hero__grid reveal">
@@ -170,17 +173,17 @@
             </div>
             <div class="gallery-panel">
               <div class="gallery-grid">
-                <a class="gallery-item" data-gallery-item data-gallery="garage" href="assets/img/site/garage/garage-flake-interior.jpg" aria-label="Open garage floor image one">
-                  <img src="assets/img/site/garage/garage-flake-interior.jpg" alt="Client-supplied flake coating floor image" width="1200" height="1600" />
+                <a class="gallery-item" data-gallery-item data-gallery="garage" href="/assets/img/site/garage/garage-flake-interior.jpg" aria-label="Open garage floor image one">
+                  <img src="/assets/img/site/garage/garage-flake-interior.jpg" alt="Client-supplied flake coating floor image" width="1200" height="1600" />
                 </a>
-                <a class="gallery-item" data-gallery-item data-gallery="garage" href="assets/img/site/garage/garage-flake-closeup.jpg" aria-label="Open garage floor image two">
-                  <img src="assets/img/site/garage/garage-flake-closeup.jpg" alt="Client-supplied flake coating close-up detail" width="1600" height="1200" />
+                <a class="gallery-item" data-gallery-item data-gallery="garage" href="/assets/img/site/garage/garage-flake-closeup.jpg" aria-label="Open garage floor image two">
+                  <img src="/assets/img/site/garage/garage-flake-closeup.jpg" alt="Client-supplied flake coating close-up detail" width="1600" height="1200" />
                 </a>
-                <a class="gallery-item" data-gallery-item data-gallery="garage" href="assets/img/site/garage/garage-flake-exterior.jpg" aria-label="Open garage floor image three">
-                  <img src="assets/img/site/garage/garage-flake-exterior.jpg" alt="Client-supplied flake coating image with residential utility context" width="1600" height="1200" />
+                <a class="gallery-item" data-gallery-item data-gallery="garage" href="/assets/img/site/garage/garage-flake-exterior.jpg" aria-label="Open garage floor image three">
+                  <img src="/assets/img/site/garage/garage-flake-exterior.jpg" alt="Client-supplied flake coating image with residential utility context" width="1600" height="1200" />
                 </a>
-                <a class="gallery-item" data-gallery-item data-gallery="garage" href="assets/img/site/decorative/metallic-residential.jpg" aria-label="Open garage floor image four">
-                  <img src="assets/img/site/decorative/metallic-residential.jpg" alt="Client-supplied coated residential floor used as an alternate garage-system reference" width="1080" height="810" />
+                <a class="gallery-item" data-gallery-item data-gallery="garage" href="/assets/img/site/decorative/metallic-residential.jpg" aria-label="Open garage floor image four">
+                  <img src="/assets/img/site/decorative/metallic-residential.jpg" alt="Client-supplied coated residential floor used as an alternate garage-system reference" width="1080" height="810" />
                 </a>
               </div>
             </div>
@@ -395,6 +398,6 @@
       <div data-estimate-modal></div>
     </div>
 
-    <script src="assets/js/site.js" defer></script>
+    <script src="/assets/js/site.js" defer></script>
   </body>
 </html>

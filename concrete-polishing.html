@@ -22,14 +22,14 @@
     <meta property="og:image:alt" content="Client-supplied polished commercial concrete floor" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#161616" />
-    <link rel="preload" as="image" href="assets/img/site/polished/polished-commercial-wide.jpg" />
+    <link rel="preload" as="image" href="/assets/img/site/polished/polished-commercial-wide.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&amp;family=Barlow+Semi+Condensed:wght@600;700&amp;family=Bebas+Neue&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -70,7 +70,10 @@
       <main id="main-content">
         <section class="page-hero">
           <div class="page-hero__media" aria-hidden="true">
-            <img class="page-hero__image" src="assets/img/site/polished/polished-commercial-wide.jpg" alt="" width="2000" height="1500" />
+            <picture style="display:block;width:100%;height:100%">
+              <source srcset="/assets/img/site/polished/polished-commercial-wide.webp" type="image/webp" />
+            <img class="page-hero__image" src="/assets/img/site/polished/polished-commercial-wide.jpg" alt="" width="2000" height="1500" />
+            </picture>
           </div>
           <div class="container-wide page-hero__inner">
             <div class="page-hero__grid reveal">
@@ -170,19 +173,17 @@
             </div>
             <div class="gallery-panel">
               <div class="gallery-grid">
-                <a class="gallery-item" data-gallery-item data-gallery="polishing" href="assets/img/site/polished/polished-commercial-wide.jpg" aria-label="Open polished concrete image one">
-                  <img src="assets/img/site/polished/polished-commercial-wide.jpg" alt="Client-supplied polished commercial floor with reflected light" width="2000" height="1500" />
+                <a class="gallery-item" data-gallery-item data-gallery="polishing" href="/assets/img/site/polished/polished-commercial-wide.jpg" aria-label="Open polished concrete image one">
+                  <img src="/assets/img/site/polished/polished-commercial-wide.jpg" alt="Client-supplied polished commercial floor with reflected light" width="2000" height="1500" />
                 </a>
-                <a class="gallery-item" data-gallery-item data-gallery="polishing" href="assets/img/site/polished/polished-aggregate-detail.jpg" aria-label="Open polished concrete image two">
-                  <img src="assets/img/site/polished/polished-aggregate-detail.jpg" alt="Client-supplied polished concrete aggregate detail" width="1200" height="1600" />
+                <a class="gallery-item" data-gallery-item data-gallery="polishing" href="/assets/img/site/polished/polished-aggregate-detail.jpg" aria-label="Open polished concrete image two">
+                  <img src="/assets/img/site/polished/polished-aggregate-detail.jpg" alt="Client-supplied polished concrete aggregate detail" width="1200" height="1600" />
                 </a>
-                <a class="gallery-item" data-gallery-item data-gallery="polishing" href="assets/img/hero-rgv.svg" aria-label="Open polished concrete image three">
-                  <!-- REPLACE: additional real polished commercial interior with directional light and clean edge work -->
-                  <img src="assets/img/hero-rgv.svg" alt="Placeholder for additional polished concrete project photography" width="1600" height="1000" />
+                <a class="gallery-item" data-gallery-item data-gallery="polishing" href="/assets/img/hero-rgv.svg" aria-label="Open polished concrete image three">
+                  <img src="/assets/img/hero-rgv.svg" alt="Placeholder for additional polished concrete project photography" width="1600" height="1000" />
                 </a>
-                <a class="gallery-item" data-gallery-item data-gallery="polishing" href="assets/img/residential-floor.svg" aria-label="Open polished concrete image four">
-                  <!-- REPLACE: modern home interior with polished concrete and minimal furnishings -->
-                  <img src="assets/img/residential-floor.svg" alt="Residential interior ready for polished concrete" width="1200" height="900" />
+                <a class="gallery-item" data-gallery-item data-gallery="polishing" href="/assets/img/residential-floor.svg" aria-label="Open polished concrete image four">
+                  <img src="/assets/img/residential-floor.svg" alt="Residential interior ready for polished concrete" width="1200" height="900" />
                 </a>
               </div>
             </div>
@@ -397,6 +398,6 @@
       <div data-estimate-modal></div>
     </div>
 
-    <script src="assets/js/site.js" defer></script>
+    <script src="/assets/js/site.js" defer></script>
   </body>
 </html>

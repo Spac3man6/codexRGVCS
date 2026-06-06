@@ -67,6 +67,9 @@ def process_one(src: Path, dest: Path, max_width: int, quality: int) -> str:
             im = im.resize((max_width, new_h), Image.LANCZOS)
         dest.parent.mkdir(parents=True, exist_ok=True)
         im.save(dest, "JPEG", quality=quality, optimize=True, progressive=True)
+        # Also save WebP version for modern browsers
+        webp_dest = dest.with_suffix(".webp")
+        im.save(webp_dest, "WEBP", quality=quality, method=6)
     return f"{im.size[0]}x{im.size[1]}"
 
 
