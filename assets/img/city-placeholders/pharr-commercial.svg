@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+  <title id="title">Generated placeholder for Pharr commercial concrete build-out</title>
+  <desc id="desc">Abstract commercial build-out with a practical finished concrete floor, for temporary layout review only.</desc>
+  <defs>
+    <linearGradient id="space" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ece8df"/>
+      <stop offset="1" stop-color="#c7c0b4"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#b6b0a6"/>
+      <stop offset=".55" stop-color="#777873"/>
+      <stop offset="1" stop-color="#3f4441"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="620" fill="url(#space)"/>
+  <path d="M0 250h900v370H0z" fill="url(#floor)"/>
+  <rect x="64" y="88" width="194" height="92" fill="#f7f2e7" opacity=".82"/>
+  <rect x="318" y="78" width="166" height="108" fill="#e0d8cb" opacity=".9"/>
+  <rect x="544" y="94" width="292" height="72" fill="#f7f2e7" opacity=".78"/>
+  <path d="M90 312h720M48 414h804M0 548h900M155 620 430 250M475 620 520 250M792 620 608 250" fill="none" stroke="#f5efe5" stroke-opacity=".3" stroke-width="6"/>
+  <path d="M0 250h900" stroke="#171717" stroke-opacity=".15" stroke-width="6"/>
+  <circle cx="740" cy="384" r="66" fill="#c75f2a" opacity=".17"/>
+</svg>

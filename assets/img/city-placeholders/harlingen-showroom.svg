@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+  <title id="title">Generated placeholder for Harlingen showroom polished concrete</title>
+  <desc id="desc">Abstract showroom or office with polished concrete floor, for temporary layout review only.</desc>
+  <defs>
+    <linearGradient id="interior" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f5f2ea"/>
+      <stop offset="1" stop-color="#d1cec6"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#c7c6bd"/>
+      <stop offset=".52" stop-color="#838985"/>
+      <stop offset="1" stop-color="#414945"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="620" fill="url(#interior)"/>
+  <path d="M0 264h900v356H0z" fill="url(#floor)"/>
+  <rect x="82" y="72" width="230" height="142" fill="#ffffff" opacity=".62"/>
+  <rect x="368" y="78" width="184" height="132" fill="#e3ddd3" opacity=".86"/>
+  <rect x="616" y="70" width="204" height="144" fill="#ffffff" opacity=".58"/>
+  <path d="M70 344h760M38 460h824M138 620 410 264M370 620 492 264M674 620 582 264" fill="none" stroke="#fffaf0" stroke-opacity=".34" stroke-width="6"/>
+  <ellipse cx="512" cy="452" rx="260" ry="34" fill="#f7f0e4" opacity=".16"/>
+  <path d="M0 264h900" stroke="#171717" stroke-opacity=".14" stroke-width="6"/>
+</svg>

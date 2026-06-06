@@ -230,7 +230,7 @@ function renderEstimateModal() {
                 <textarea
                   id="estimate-message"
                   name="message"
-                  placeholder="Describe the condition of the slab, finish you want, target schedule, and anything that should be quoted."
+                  placeholder="Describe the condition of the concrete, finish you want, target schedule, and anything that should be quoted."
                   required
                 ></textarea>
               </div>
