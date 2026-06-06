@@ -1,7 +1,9 @@
 const siteConfig = {
-  phoneDisplay: "(956) 502-9635",
-  phoneHref: "+19565029635",
-  email: "hello@rgvconcretestain.com",
+  phoneDisplay: "(956) 502-9365",
+  phoneHref: "+19565029365",
+  email: "rgvconcretestain@gmail.com",
+  // Formspree endpoint. Every lead form POSTs here via AJAX (see initForms).
+  formEndpoint: "https://formspree.io/f/xkoanrop",
   serviceArea: [
     "McAllen",
     "Edinburg",
@@ -135,7 +137,7 @@ function renderSiteFooter() {
             <p><a class="footer-contact" href="tel:${siteConfig.phoneHref}">${siteConfig.phoneDisplay}</a></p>
             <p><a class="footer-contact" href="mailto:${siteConfig.email}">${siteConfig.email}</a></p>
             <p><a class="footer-contact" href="${siteConfig.pages.contact}#request-estimate">Schedule a call</a></p>
-            <p class="site-footer__hours">Mon-Fri, 8:00 AM to 6:00 PM</p>
+            <p class="site-footer__hours">Mon-Fri, 7:00 AM to 5:00 PM</p>
           </section>
         </div>
       </div>
@@ -540,29 +542,34 @@ function initForms() {
         submittedAt: new Date().toISOString()
       };
 
-      status.textContent = "Sending your request...";
+      status.textContent = "Sending your request…";
       status.className = "lead-form__status";
 
-      fetch("https://formspree.io/f/xkoanrop", {
+      fetch(siteConfig.formEndpoint, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(payload)
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `New website request: ${payload.form}`,
+          ...payload
+        })
       })
         .then((response) => {
           if (response.ok) {
-            status.textContent = "Thanks! Your request has been sent successfully. We will be in touch shortly.";
+            status.textContent = "Thank you — your request was sent. We'll be in touch shortly.";
             status.className = "lead-form__status is-success";
             htmlForm.reset();
-          } else {
-            status.textContent = "Oops! There was a problem submitting your form. Please try again.";
-            status.className = "lead-form__status is-error";
+            return;
           }
+          return response.json().then((data) => {
+            const errors = data && Array.isArray(data.errors) ? data.errors : [];
+            status.textContent = errors.length
+              ? errors.map((err) => err.message).join(" ")
+              : `We couldn't send your request. Please call ${siteConfig.phoneDisplay}.`;
+            status.className = "lead-form__status is-error";
+          });
         })
-        .catch((error) => {
-          status.textContent = "Oops! There was a problem connecting to the server. Please check your connection.";
+        .catch(() => {
+          status.textContent = `Network error sending your request. Please call ${siteConfig.phoneDisplay}.`;
           status.className = "lead-form__status is-error";
         });
     });

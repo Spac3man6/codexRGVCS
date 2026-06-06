@@ -1,5 +1,7 @@
 # Preview QA - 2026-06-03
 
+> Historical QA snapshot: findings reflect the preview state on 2026-06-03 and follow-up checks on 2026-06-04. Current code has Formspree wiring and contact-detail updates that may resolve some findings. Re-test before treating any finding here as still open.
+
 Preview URL under review: `https://rgvcs.vercel.app`
 
 Note: The user provided `rgvcs.vercel.ap`; this pass assumes the intended Vercel preview is `rgvcs.vercel.app` and includes a check for the `.ap` variant.
