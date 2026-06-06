@@ -540,14 +540,31 @@ function initForms() {
         submittedAt: new Date().toISOString()
       };
 
-      const existing = JSON.parse(localStorage.getItem("rgvConcreteLeadForms") || "[]");
-      existing.push(payload);
-      localStorage.setItem("rgvConcreteLeadForms", JSON.stringify(existing));
+      status.textContent = "Sending your request...";
+      status.className = "lead-form__status";
 
-      status.textContent =
-        "Request captured in demo mode. Connect the final launch form to email or CRM before going live.";
-      status.className = "lead-form__status is-success";
-      htmlForm.reset();
+      fetch("https://formspree.io/f/xkoanrop", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(payload)
+      })
+        .then((response) => {
+          if (response.ok) {
+            status.textContent = "Thanks! Your request has been sent successfully. We will be in touch shortly.";
+            status.className = "lead-form__status is-success";
+            htmlForm.reset();
+          } else {
+            status.textContent = "Oops! There was a problem submitting your form. Please try again.";
+            status.className = "lead-form__status is-error";
+          }
+        })
+        .catch((error) => {
+          status.textContent = "Oops! There was a problem connecting to the server. Please check your connection.";
+          status.className = "lead-form__status is-error";
+        });
     });
   });
 }
