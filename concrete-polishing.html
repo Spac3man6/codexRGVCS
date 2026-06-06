@@ -72,7 +72,7 @@
           <div class="page-hero__media" aria-hidden="true">
             <picture style="display:block;width:100%;height:100%">
               <source srcset="/assets/img/site/polished/polished-commercial-wide.webp" type="image/webp" />
-            <img class="page-hero__image" src="/assets/img/site/polished/polished-commercial-wide.jpg" alt="" width="2000" height="1500" />
+            <img class="page-hero__image" src="/assets/img/site/polished/polished-commercial-wide.jpg" alt="" width="2000" height="1500" fetchpriority="high" />
             </picture>
           </div>
           <div class="container-wide page-hero__inner">
@@ -174,16 +174,28 @@
             <div class="gallery-panel">
               <div class="gallery-grid">
                 <a class="gallery-item" data-gallery-item data-gallery="polishing" href="/assets/img/site/polished/polished-commercial-wide.jpg" aria-label="Open polished concrete image one">
-                  <img src="/assets/img/site/polished/polished-commercial-wide.jpg" alt="Client-supplied polished commercial floor with reflected light" width="2000" height="1500" />
+                  <picture>
+                    <source srcset="/assets/img/site/polished/polished-commercial-wide.webp" type="image/webp" />
+                    <img src="/assets/img/site/polished/polished-commercial-wide.jpg" alt="Client-supplied polished commercial floor with reflected light" width="2000" height="1500" />
+                  </picture>
                 </a>
                 <a class="gallery-item" data-gallery-item data-gallery="polishing" href="/assets/img/site/polished/polished-aggregate-detail.jpg" aria-label="Open polished concrete image two">
-                  <img src="/assets/img/site/polished/polished-aggregate-detail.jpg" alt="Client-supplied polished concrete aggregate detail" width="1200" height="1600" />
+                  <picture>
+                    <source srcset="/assets/img/site/polished/polished-aggregate-detail.webp" type="image/webp" />
+                    <img src="/assets/img/site/polished/polished-aggregate-detail.jpg" alt="Client-supplied polished concrete aggregate detail" width="1200" height="1600" />
+                  </picture>
                 </a>
                 <a class="gallery-item" data-gallery-item data-gallery="polishing" href="/assets/img/site/polished/polished-commercial-wide.jpg" aria-label="Open polished concrete image three">
-                  <img src="/assets/img/site/polished/polished-commercial-wide.jpg" alt="Polished commercial concrete floor reflecting overhead light" width="2000" height="1500" />
+                  <picture>
+                    <source srcset="/assets/img/site/polished/polished-commercial-wide.webp" type="image/webp" />
+                    <img src="/assets/img/site/polished/polished-commercial-wide.jpg" alt="Polished commercial concrete floor reflecting overhead light" width="2000" height="1500" />
+                  </picture>
                 </a>
                 <a class="gallery-item" data-gallery-item data-gallery="polishing" href="/assets/img/site/polished/polished-aggregate-detail.jpg" aria-label="Open polished concrete image four">
-                  <img src="/assets/img/site/polished/polished-aggregate-detail.jpg" alt="Close-up of polished concrete with exposed aggregate detail" width="1200" height="1600" />
+                  <picture>
+                    <source srcset="/assets/img/site/polished/polished-aggregate-detail.webp" type="image/webp" />
+                    <img src="/assets/img/site/polished/polished-aggregate-detail.jpg" alt="Close-up of polished concrete with exposed aggregate detail" width="1200" height="1600" />
+                  </picture>
                 </a>
               </div>
             </div>

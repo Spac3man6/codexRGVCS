@@ -80,7 +80,8 @@
         <section class="hero hero--home">
           <div class="hero__media" aria-hidden="true">
             <picture style="display: block; width: 100%; height: 100%;">
-              <source media="(max-width: 767px)" srcset="/assets/img/site/home/home-hero-temp-ai-warehouse.png" />
+              <source media="(max-width: 767px)" srcset="/assets/img/site/home/home-hero-temp-ai-warehouse.webp" type="image/webp" />
+              <source media="(max-width: 767px)" srcset="/assets/img/site/home/home-hero-temp-ai-warehouse.jpg" />
               <source media="(min-width: 768px)" srcset="/assets/img/site/polished/polished-commercial-wide.webp" type="image/webp" />
               <img
                 class="hero__image"
@@ -88,6 +89,7 @@
                 alt="Polished concrete commercial floor in the Rio Grande Valley"
                 width="2000"
                 height="1500"
+                fetchpriority="high"
               />
             </picture>
           </div>
@@ -160,49 +162,70 @@
             </div>
             <div class="city-wall__grid" aria-label="Service area cities">
               <article class="city-card">
-                <img class="city-card__image" src="/assets/img/city-placeholders/mcallen-retail-generated-temp.jpg" alt="McAllen retail interior with warm stained concrete flooring" width="1000" height="562" loading="lazy" decoding="async" />
+                <picture>
+                  <source srcset="/assets/img/city-placeholders/mcallen-retail-generated-temp.webp" type="image/webp" />
+                  <img class="city-card__image" src="/assets/img/city-placeholders/mcallen-retail-generated-temp.jpg" alt="McAllen retail interior with warm stained concrete flooring" width="1000" height="562" loading="lazy" decoding="async" />
+                </picture>
                 <span class="city-card__content">
                   <span class="city-card__name">McAllen</span>
                   <span class="city-card__meta">Retail interiors / homes / patios</span>
                 </span>
               </article>
               <article class="city-card">
-                <img class="city-card__image" src="/assets/img/city-placeholders/edinburg-residential-entry.jpg" alt="Edinburg residential entry with warm stained concrete flooring" width="1000" height="562" loading="lazy" decoding="async" />
+                <picture>
+                  <source srcset="/assets/img/city-placeholders/edinburg-residential-entry.webp" type="image/webp" />
+                  <img class="city-card__image" src="/assets/img/city-placeholders/edinburg-residential-entry.jpg" alt="Edinburg residential entry with warm stained concrete flooring" width="1000" height="562" loading="lazy" decoding="async" />
+                </picture>
                 <span class="city-card__content">
                   <span class="city-card__name">Edinburg</span>
                   <span class="city-card__meta">Residential concrete surfaces / remodels / entries</span>
                 </span>
               </article>
               <article class="city-card">
-                <img class="city-card__image" src="/assets/img/city-placeholders/mission-patio-poolside.jpg" alt="Mission poolside patio with finished decorative concrete" width="1000" height="562" loading="lazy" decoding="async" />
+                <picture>
+                  <source srcset="/assets/img/city-placeholders/mission-patio-poolside.webp" type="image/webp" />
+                  <img class="city-card__image" src="/assets/img/city-placeholders/mission-patio-poolside.jpg" alt="Mission poolside patio with finished decorative concrete" width="1000" height="562" loading="lazy" decoding="async" />
+                </picture>
                 <span class="city-card__content">
                   <span class="city-card__name">Mission</span>
                   <span class="city-card__meta">Patios / poolside concrete / garages</span>
                 </span>
               </article>
               <article class="city-card">
-                <img class="city-card__image" src="/assets/img/city-placeholders/pharr-commercial-buildout.jpg" alt="Pharr commercial service area with finished concrete floor" width="1000" height="562" loading="lazy" decoding="async" />
+                <picture>
+                  <source srcset="/assets/img/city-placeholders/pharr-commercial-buildout.webp" type="image/webp" />
+                  <img class="city-card__image" src="/assets/img/city-placeholders/pharr-commercial-buildout.jpg" alt="Pharr commercial service area with finished concrete floor" width="1000" height="562" loading="lazy" decoding="async" />
+                </picture>
                 <span class="city-card__content">
                   <span class="city-card__name">Pharr</span>
                   <span class="city-card__meta">Commercial build-outs / service areas</span>
                 </span>
               </article>
               <article class="city-card">
-                <img class="city-card__image" src="/assets/img/city-placeholders/harlingen-showroom-office.jpg" alt="Harlingen showroom with polished concrete floor" width="1000" height="562" loading="lazy" decoding="async" />
+                <picture>
+                  <source srcset="/assets/img/city-placeholders/harlingen-showroom-office.webp" type="image/webp" />
+                  <img class="city-card__image" src="/assets/img/city-placeholders/harlingen-showroom-office.jpg" alt="Harlingen showroom with polished concrete floor" width="1000" height="562" loading="lazy" decoding="async" />
+                </picture>
                 <span class="city-card__content">
                   <span class="city-card__name">Harlingen</span>
                   <span class="city-card__meta">Showrooms / offices / polished concrete surfaces</span>
                 </span>
               </article>
               <article class="city-card">
-                <img class="city-card__image" src="/assets/img/city-placeholders/brownsville-hospitality.jpg" alt="Brownsville hospitality space with decorative concrete floor" width="1000" height="562" loading="lazy" decoding="async" />
+                <picture>
+                  <source srcset="/assets/img/city-placeholders/brownsville-hospitality.webp" type="image/webp" />
+                  <img class="city-card__image" src="/assets/img/city-placeholders/brownsville-hospitality.jpg" alt="Brownsville hospitality space with decorative concrete floor" width="1000" height="562" loading="lazy" decoding="async" />
+                </picture>
                 <span class="city-card__content">
                   <span class="city-card__name">Brownsville</span>
                   <span class="city-card__meta">Hospitality floors / decorative finishes</span>
                 </span>
               </article>
               <article class="city-card">
-                <img class="city-card__image" src="/assets/img/city-placeholders/weslaco-garage-coating.jpg" alt="Weslaco garage with decorative concrete coating" width="1000" height="562" loading="lazy" decoding="async" />
+                <picture>
+                  <source srcset="/assets/img/city-placeholders/weslaco-garage-coating.webp" type="image/webp" />
+                  <img class="city-card__image" src="/assets/img/city-placeholders/weslaco-garage-coating.jpg" alt="Weslaco garage with decorative concrete coating" width="1000" height="562" loading="lazy" decoding="async" />
+                </picture>
                 <span class="city-card__content">
                   <span class="city-card__name">Weslaco</span>
                   <span class="city-card__meta">Garages / home interiors / reseals</span>
@@ -235,7 +258,10 @@
                   href="/assets/img/site/polished/polished-commercial-wide.jpg"
                   aria-label="Open commercial floor gallery image"
                 >
-                  <img src="/assets/img/site/polished/polished-commercial-wide.jpg" alt="Client-supplied polished commercial floor image" width="2000" height="1500" loading="lazy" decoding="async" />
+                  <picture>
+                    <source srcset="/assets/img/site/polished/polished-commercial-wide.webp" type="image/webp" />
+                    <img src="/assets/img/site/polished/polished-commercial-wide.jpg" alt="Client-supplied polished commercial floor image" width="2000" height="1500" loading="lazy" decoding="async" />
+                  </picture>
                 </a>
                 <a
                   class="gallery-item"
@@ -244,7 +270,10 @@
                   href="/assets/img/site/polished/polished-aggregate-detail.jpg"
                   aria-label="Open polished concrete gallery image"
                 >
-                  <img src="/assets/img/site/polished/polished-aggregate-detail.jpg" alt="Client-supplied polished concrete aggregate detail" width="1200" height="1600" loading="lazy" decoding="async" />
+                  <picture>
+                    <source srcset="/assets/img/site/polished/polished-aggregate-detail.webp" type="image/webp" />
+                    <img src="/assets/img/site/polished/polished-aggregate-detail.jpg" alt="Client-supplied polished concrete aggregate detail" width="1200" height="1600" loading="lazy" decoding="async" />
+                  </picture>
                 </a>
                 <a
                   class="gallery-item"
@@ -253,7 +282,10 @@
                   href="/assets/img/site/decorative/metallic-wide.jpg"
                   aria-label="Open epoxy flooring gallery image"
                 >
-                  <img src="/assets/img/site/decorative/metallic-wide.jpg" alt="Client-supplied metallic epoxy floor in a commercial space" width="1600" height="1200" loading="lazy" decoding="async" />
+                  <picture>
+                    <source srcset="/assets/img/site/decorative/metallic-wide.webp" type="image/webp" />
+                    <img src="/assets/img/site/decorative/metallic-wide.jpg" alt="Client-supplied metallic epoxy floor in a commercial space" width="1600" height="1200" loading="lazy" decoding="async" />
+                  </picture>
                 </a>
                 <a
                   class="gallery-item"
@@ -262,7 +294,10 @@
                   href="/assets/img/site/decorative/metallic-detail.jpg"
                   aria-label="Open decorative coating gallery image"
                 >
-                  <img src="/assets/img/site/decorative/metallic-detail.jpg" alt="Client-supplied metallic decorative floor detail" width="1200" height="1600" loading="lazy" decoding="async" />
+                  <picture>
+                    <source srcset="/assets/img/site/decorative/metallic-detail.webp" type="image/webp" />
+                    <img src="/assets/img/site/decorative/metallic-detail.jpg" alt="Client-supplied metallic decorative floor detail" width="1200" height="1600" loading="lazy" decoding="async" />
+                  </picture>
                 </a>
               </div>
             </div>
@@ -292,7 +327,10 @@
                   href="/assets/img/site/decorative/metallic-residential.jpg"
                   aria-label="Open residential floor gallery image"
                 >
-                  <img src="/assets/img/site/decorative/metallic-residential.jpg" alt="Client-supplied residential metallic epoxy floor image" width="1080" height="810" />
+                  <picture>
+                    <source srcset="/assets/img/site/decorative/metallic-residential.webp" type="image/webp" />
+                    <img src="/assets/img/site/decorative/metallic-residential.jpg" alt="Client-supplied residential metallic epoxy floor image" width="1080" height="810" />
+                  </picture>
                 </a>
                 <a
                   class="gallery-item"
@@ -301,7 +339,10 @@
                   href="/assets/img/site/staining/stained-patio-wide.jpg"
                   aria-label="Open stained concrete gallery image"
                 >
-                  <img src="/assets/img/site/staining/stained-patio-wide.jpg" alt="Earth-tone stained concrete patio with pergola and South Texas landscaping" width="1800" height="1004" loading="lazy" decoding="async" />
+                  <picture>
+                    <source srcset="/assets/img/site/staining/stained-patio-wide.webp" type="image/webp" />
+                    <img src="/assets/img/site/staining/stained-patio-wide.jpg" alt="Earth-tone stained concrete patio with pergola and South Texas landscaping" width="1800" height="1004" loading="lazy" decoding="async" />
+                  </picture>
                 </a>
                 <a
                   class="gallery-item"
@@ -310,7 +351,10 @@
                   href="/assets/img/site/garage/garage-flake-exterior.jpg"
                   aria-label="Open garage floor gallery image"
                 >
-                  <img src="/assets/img/site/garage/garage-flake-exterior.jpg" alt="Client-supplied flake coating image with outdoor utility context" width="1600" height="1200" loading="lazy" decoding="async" />
+                  <picture>
+                    <source srcset="/assets/img/site/garage/garage-flake-exterior.webp" type="image/webp" />
+                    <img src="/assets/img/site/garage/garage-flake-exterior.jpg" alt="Client-supplied flake coating image with outdoor utility context" width="1600" height="1200" loading="lazy" decoding="async" />
+                  </picture>
                 </a>
                 <a
                   class="gallery-item"
@@ -319,7 +363,10 @@
                   href="/assets/img/site/garage/garage-flake-closeup.jpg"
                   aria-label="Open decorative concrete hero gallery image"
                 >
-                  <img src="/assets/img/site/garage/garage-flake-closeup.jpg" alt="Client-supplied flake floor close-up detail" width="1600" height="1200" loading="lazy" decoding="async" />
+                  <picture>
+                    <source srcset="/assets/img/site/garage/garage-flake-closeup.webp" type="image/webp" />
+                    <img src="/assets/img/site/garage/garage-flake-closeup.jpg" alt="Client-supplied flake floor close-up detail" width="1600" height="1200" loading="lazy" decoding="async" />
+                  </picture>
                 </a>
               </div>
             </div>
@@ -523,7 +570,10 @@
             <div class="editorial-grid">
               <article class="project-card">
                 <div class="project-card__media">
-                  <img src="/assets/img/site/staining/stained-patio-wide.jpg" alt="Stained concrete patio in the Rio Grande Valley" width="1800" height="1004" />
+                  <picture>
+                    <source srcset="/assets/img/site/staining/stained-patio-wide.webp" type="image/webp" />
+                    <img src="/assets/img/site/staining/stained-patio-wide.jpg" alt="Stained concrete patio in the Rio Grande Valley" width="1800" height="1004" />
+                  </picture>
                 </div>
                 <div class="project-card__body">
                   <span class="card-kicker">Featured Scope</span>
@@ -543,7 +593,10 @@
 
               <article class="project-card">
                 <div class="project-card__media">
-                  <img src="/assets/img/site/polished/polished-commercial-wide.jpg" alt="Representative polished concrete project profile using client-supplied imagery" width="2000" height="1500" loading="lazy" decoding="async" />
+                  <picture>
+                    <source srcset="/assets/img/site/polished/polished-commercial-wide.webp" type="image/webp" />
+                    <img src="/assets/img/site/polished/polished-commercial-wide.jpg" alt="Representative polished concrete project profile using client-supplied imagery" width="2000" height="1500" loading="lazy" decoding="async" />
+                  </picture>
                 </div>
                 <div class="project-card__body">
                   <span class="card-kicker">Featured Scope</span>
@@ -563,7 +616,10 @@
 
               <article class="project-card">
                 <div class="project-card__media">
-                  <img src="/assets/img/site/garage/garage-flake-interior.jpg" alt="Representative coated floor project profile using client-supplied flake image" width="1200" height="1600" loading="lazy" decoding="async" />
+                  <picture>
+                    <source srcset="/assets/img/site/garage/garage-flake-interior.webp" type="image/webp" />
+                    <img src="/assets/img/site/garage/garage-flake-interior.jpg" alt="Representative coated floor project profile using client-supplied flake image" width="1200" height="1600" loading="lazy" decoding="async" />
+                  </picture>
                 </div>
                 <div class="project-card__body">
                   <span class="card-kicker">Featured Scope</span>

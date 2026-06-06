@@ -78,7 +78,7 @@
           <div class="page-hero__media" aria-hidden="true">
             <picture style="display:block;width:100%;height:100%">
               <source srcset="/assets/img/site/staining/stained-patio-wide.webp" type="image/webp" />
-            <img class="page-hero__image" src="/assets/img/site/staining/stained-patio-wide.jpg" alt="" width="1800" height="1004" />
+            <img class="page-hero__image" src="/assets/img/site/staining/stained-patio-wide.jpg" alt="" width="1800" height="1004" fetchpriority="high" />
             </picture>
           </div>
           <div class="container-wide page-hero__inner">
@@ -133,7 +133,10 @@
               </div>
             </div>
             <div class="image-frame">
-              <img src="/assets/img/site/staining/stained-patio-wide.jpg" alt="Stained concrete patio in the Rio Grande Valley" width="1800" height="1004" />
+              <picture>
+                <source srcset="/assets/img/site/staining/stained-patio-wide.webp" type="image/webp" />
+                <img src="/assets/img/site/staining/stained-patio-wide.jpg" alt="Stained concrete patio in the Rio Grande Valley" width="1800" height="1004" />
+              </picture>
               <div class="image-frame__caption">
                 Built in the Rio Grande Valley
               </div>
@@ -196,38 +199,80 @@
               <span class="eyebrow">Where We Work</span>
               <h2>Valley Coverage For Homes, Garages, Retail, And Commercial Interiors</h2>
               <p class="section-copy">
-                The site content is written around the cities where most Rio Grande Valley concrete finish projects are likely to
-                be scheduled, quoted, and revisited for maintenance or reseal discussions.
+                We take on concrete finish projects across the Rio Grande Valley, from first quote through scheduling and later
+                reseal or maintenance. These are the cities where most of our work happens.
               </p>
             </div>
             <div class="city-wall__grid">
               <article class="city-card">
-                <span class="city-card__name">McAllen</span>
-                <span class="city-card__meta">Retail build-outs / patios / homes</span>
+                <picture>
+                  <source srcset="/assets/img/city-placeholders/mcallen-retail-generated-temp.webp" type="image/webp" />
+                  <img class="city-card__image" src="/assets/img/city-placeholders/mcallen-retail-generated-temp.jpg" alt="McAllen retail interior with warm stained concrete flooring" width="1000" height="562" loading="lazy" decoding="async" />
+                </picture>
+                <span class="city-card__content">
+                  <span class="city-card__name">McAllen</span>
+                  <span class="city-card__meta">Retail build-outs / patios / homes</span>
+                </span>
               </article>
               <article class="city-card">
-                <span class="city-card__name">Edinburg</span>
-                <span class="city-card__meta">Interiors / entries / garage floors</span>
+                <picture>
+                  <source srcset="/assets/img/city-placeholders/edinburg-residential-entry.webp" type="image/webp" />
+                  <img class="city-card__image" src="/assets/img/city-placeholders/edinburg-residential-entry.jpg" alt="Edinburg residential entry with warm stained concrete flooring" width="1000" height="562" loading="lazy" decoding="async" />
+                </picture>
+                <span class="city-card__content">
+                  <span class="city-card__name">Edinburg</span>
+                  <span class="city-card__meta">Interiors / entries / garage floors</span>
+                </span>
               </article>
               <article class="city-card">
-                <span class="city-card__name">Mission</span>
-                <span class="city-card__meta">Poolside concrete surfaces / porches / overlays</span>
+                <picture>
+                  <source srcset="/assets/img/city-placeholders/mission-patio-poolside.webp" type="image/webp" />
+                  <img class="city-card__image" src="/assets/img/city-placeholders/mission-patio-poolside.jpg" alt="Mission poolside patio with finished decorative concrete" width="1000" height="562" loading="lazy" decoding="async" />
+                </picture>
+                <span class="city-card__content">
+                  <span class="city-card__name">Mission</span>
+                  <span class="city-card__meta">Poolside concrete surfaces / porches / overlays</span>
+                </span>
               </article>
               <article class="city-card">
-                <span class="city-card__name">Pharr</span>
-                <span class="city-card__meta">Commercial services / tenant fit-outs</span>
+                <picture>
+                  <source srcset="/assets/img/city-placeholders/pharr-commercial-buildout.webp" type="image/webp" />
+                  <img class="city-card__image" src="/assets/img/city-placeholders/pharr-commercial-buildout.jpg" alt="Pharr commercial service area with finished concrete floor" width="1000" height="562" loading="lazy" decoding="async" />
+                </picture>
+                <span class="city-card__content">
+                  <span class="city-card__name">Pharr</span>
+                  <span class="city-card__meta">Commercial services / tenant fit-outs</span>
+                </span>
               </article>
               <article class="city-card">
-                <span class="city-card__name">Harlingen</span>
-                <span class="city-card__meta">Showrooms / offices / polish work</span>
+                <picture>
+                  <source srcset="/assets/img/city-placeholders/harlingen-showroom-office.webp" type="image/webp" />
+                  <img class="city-card__image" src="/assets/img/city-placeholders/harlingen-showroom-office.jpg" alt="Harlingen showroom with polished concrete floor" width="1000" height="562" loading="lazy" decoding="async" />
+                </picture>
+                <span class="city-card__content">
+                  <span class="city-card__name">Harlingen</span>
+                  <span class="city-card__meta">Showrooms / offices / polish work</span>
+                </span>
               </article>
               <article class="city-card">
-                <span class="city-card__name">Brownsville</span>
-                <span class="city-card__meta">Hospitality floors / decorative coatings</span>
+                <picture>
+                  <source srcset="/assets/img/city-placeholders/brownsville-hospitality.webp" type="image/webp" />
+                  <img class="city-card__image" src="/assets/img/city-placeholders/brownsville-hospitality.jpg" alt="Brownsville hospitality space with decorative concrete floor" width="1000" height="562" loading="lazy" decoding="async" />
+                </picture>
+                <span class="city-card__content">
+                  <span class="city-card__name">Brownsville</span>
+                  <span class="city-card__meta">Hospitality floors / decorative coatings</span>
+                </span>
               </article>
               <article class="city-card">
-                <span class="city-card__name">Weslaco</span>
-                <span class="city-card__meta">Garages / home updates / reseals</span>
+                <picture>
+                  <source srcset="/assets/img/city-placeholders/weslaco-garage-coating.webp" type="image/webp" />
+                  <img class="city-card__image" src="/assets/img/city-placeholders/weslaco-garage-coating.jpg" alt="Weslaco garage with decorative concrete coating" width="1000" height="562" loading="lazy" decoding="async" />
+                </picture>
+                <span class="city-card__content">
+                  <span class="city-card__name">Weslaco</span>
+                  <span class="city-card__meta">Garages / home updates / reseals</span>
+                </span>
               </article>
             </div>
           </div>
