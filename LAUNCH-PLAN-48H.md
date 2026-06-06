@@ -1,5 +1,7 @@
 # RGV Concrete Stain — 48-Hour Launch Plan
 
+> Historical snapshot: this file records an earlier launch-planning state. Current code has Formspree wired, launch contact details updated, and `main` synced with GitHub. Use `README.md`, `PROJECT-CONTEXT.md`, `SETUP-STEPS.md`, and `CONTENT-GUIDE.md` for current operational truth.
+
 Status as verified on clone (tests run, JS read, assets inventoried):
 - Stack: static HTML/CSS/vanilla JS. No build step. 11 pages. Test suite passes 11/11.
 - Code/structure: DONE. This is not a coding project anymore.

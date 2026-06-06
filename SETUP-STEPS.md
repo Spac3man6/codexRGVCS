@@ -1,14 +1,9 @@
-# RGV Concrete Stain — Setup Steps (the parts only you can do)
+# RGV Concrete Stain — Setup Steps
 
-Apply the code fixes first, then do these in order. Items 1-3 are required
-before launch. Item 4 is the cutover. Item 5 is photos (can trail launch).
+The code fixes below are already merged into the current `main` branch. Use this file for launch/deployment checks, not as a patch-application guide.
 
-## 0. Apply the patch
-From the repo root on your machine:
-    git apply rgvcs-fixes.patch
-    python3 -m unittest tests.test_site     # should print OK (11 tests)
+## Current verified code state
 
-What the patch already fixed (verified):
 - Phone corrected to (956) 502-9365 everywhere (site had the wrong/transposed number)
 - Dead email hello@rgvconcretestain.com replaced with rgvconcretestain@gmail.com
 - Street address + ZIP (810 W Dipper Ave, Pharr, TX 78577) added to all JSON-LD
@@ -16,7 +11,8 @@ What the patch already fixed (verified):
 - Contact map embed repointed to the real address
 - All lead forms rewired from localStorage demo mode to your Formspree endpoint (AJAX)
 
-## 1. Activate the Formspree form (REQUIRED — leads won't arrive until you do)
+## 1. Activate or verify the Formspree form
+
 - Endpoint is already wired in assets/js/site.js: https://formspree.io/f/xkoanrop
 - Formspree HOLDS the first submission and emails you a confirmation link.
   Submit one test lead, then click that link in the inbox tied to the form,

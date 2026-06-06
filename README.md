@@ -36,7 +36,7 @@ Static multi-page rebuild for RGV Concrete Stain, continuing from the existing s
 ## Build Direction
 
 - Static HTML, CSS, and JS only
-- Shared header, footer, mobile drawer, sticky CTA, estimate modal, accordion, gallery modal, and demo form handling are all reused from the existing scaffold
+- Shared header, footer, mobile drawer, sticky CTA, estimate modal, accordion, gallery modal, and Formspree lead handling are all reused from the existing scaffold
 - Copy and service framing are tailored to the Rio Grande Valley instead of the original reference site's broader national positioning
 - All image placeholders are explicitly marked in the HTML with `<!-- REPLACE: ... -->` comments
 
@@ -73,15 +73,15 @@ The suite checks:
 
 ## Form Behavior
 
-- All forms currently run in demo mode
-- Submissions are stored in `localStorage` under `rgvConcreteLeadForms`
-- Before launch, connect the forms in [`assets/js/site.js`](./assets/js/site.js) to the final inbox, CRM, or automation target
+- All lead forms submit through the Formspree endpoint configured in [`assets/js/site.js`](./assets/js/site.js)
+- Form submissions include the page, form identifier, submitted fields, and submission timestamp
+- Failed submissions show a visible error and direct users to call the listed phone number
 
 ## Content Notes
 
-- Phone number has been updated; email, map preference, and form destination still need final launch confirmation
+- Phone number, email, map preference, hours, and form destination have been updated for launch
 - Gallery and case study imagery are still placeholder SVGs
-- The contact page map is a broad regional embed and should be replaced with the final business-preferred map presentation if needed
+- The contact page map points to the Pharr address and should only be changed if the business prefers a different public map presentation
 - If generated imagery is needed to close the remaining gaps, use `ANTIGRAVITY-MASTER-PROMPT.md` and require the documented handoff bundle before Codex resumes integration
 - See [`CONTENT-GUIDE.md`](./CONTENT-GUIDE.md) for the full replacement list
 - See [`ASSET-AUDIT.md`](./ASSET-AUDIT.md) for current client asset quality, fit, and remaining gaps
