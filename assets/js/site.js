@@ -144,9 +144,11 @@ function renderSiteFooter() {
       <div class="site-footer__bottom">
         <div class="container-wide">
           <p class="site-footer__legal">
-            All Rights Reserved &copy; <span data-current-year></span> RGV Concrete Stain |
-            <a class="footer-link" href="sitemap.xml">Sitemap</a> |
             <a class="footer-link footer-link--estimate" href="${siteConfig.pages.contact}#request-estimate">Request an Estimate</a>
+            <span class="site-footer__legal-copy">
+              All Rights Reserved &copy; <span data-current-year></span> RGV Concrete Stain |
+              <a class="footer-link" href="sitemap.xml">Sitemap</a>
+            </span>
           </p>
         </div>
       </div>

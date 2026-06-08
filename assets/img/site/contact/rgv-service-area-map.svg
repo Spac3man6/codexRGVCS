@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 720" role="img" aria-labelledby="title desc">
+  <title id="title">Rio Grande Valley service area map</title>
+  <desc id="desc">Stylized map showing RGV Concrete Stain service coverage across McAllen, Edinburg, Mission, Pharr, Weslaco, Harlingen, and Brownsville.</desc>
+  <defs>
+    <pattern id="grid" width="72" height="72" patternUnits="userSpaceOnUse">
+      <path d="M72 0H0v72" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.55"/>
+    </pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="8" dy="8" stdDeviation="0" flood-color="#161616" flood-opacity="1"/>
+    </filter>
+  </defs>
+
+  <rect width="1400" height="720" fill="#f6f1e8"/>
+  <rect width="1400" height="720" fill="url(#grid)"/>
+
+  <path
+    d="M176 340c88-66 154-90 242-96 78-5 136 16 220 8 92-8 142-50 232-40 81 9 132 58 205 75 74 17 151-2 222 35-52 57-123 96-210 116-86 21-171 17-258 33-105 19-178 70-278 63-90-6-144-56-229-72-60-11-112-2-171-25 4-35 12-67 25-97z"
+    fill="#d8e0db"
+    stroke="#161616"
+    stroke-width="6"
+  />
+  <path
+    d="M155 419c107 29 193 19 280 37 85 18 141 68 235 68 106 0 175-58 285-77 88-16 173-5 258-32 49-16 92-39 127-70"
+    fill="none"
+    stroke="#d96b1d"
+    stroke-width="18"
+    stroke-linecap="round"
+    opacity="0.82"
+  />
+  <path
+    d="M208 392c98 3 174 19 251 42 85 25 143 50 232 45 79-4 136-34 209-54 104-29 215-17 306-67"
+    fill="none"
+    stroke="#161616"
+    stroke-width="5"
+    stroke-linecap="round"
+    stroke-dasharray="18 16"
+    opacity="0.55"
+  />
+
+  <g filter="url(#shadow)">
+    <rect x="1000" y="88" width="316" height="112" fill="#d96b1d" stroke="#161616" stroke-width="6"/>
+    <text x="1158" y="132" text-anchor="middle" font-family="Barlow, Arial, sans-serif" font-size="27" font-weight="800" fill="#ffffff" letter-spacing="1.2">RGV CONCRETE STAIN</text>
+    <text x="1158" y="169" text-anchor="middle" font-family="Barlow, Arial, sans-serif" font-size="39" font-weight="800" fill="#ffffff">Pharr, TX</text>
+  </g>
+
+  <g font-family="Barlow, Arial, sans-serif" font-size="29" font-weight="800" fill="#161616">
+    <g>
+      <circle cx="413" cy="365" r="12" fill="#d96b1d" stroke="#161616" stroke-width="5"/>
+      <rect x="263" y="311" width="139" height="48" fill="#fffdf8" stroke="#161616" stroke-width="4"/>
+      <text x="333" y="344" text-anchor="middle">Mission</text>
+      <path d="M398 353l-45-12" fill="none" stroke="#161616" stroke-width="4"/>
+    </g>
+    <g>
+      <circle cx="507" cy="382" r="12" fill="#d96b1d" stroke="#161616" stroke-width="5"/>
+      <rect x="400" y="434" width="143" height="48" fill="#fffdf8" stroke="#161616" stroke-width="4"/>
+      <text x="472" y="467" text-anchor="middle">McAllen</text>
+      <path d="M501 397l-22 37" fill="none" stroke="#161616" stroke-width="4"/>
+    </g>
+    <g>
+      <circle cx="603" cy="323" r="12" fill="#d96b1d" stroke="#161616" stroke-width="5"/>
+      <rect x="538" y="150" width="143" height="48" fill="#fffdf8" stroke="#161616" stroke-width="4"/>
+      <text x="610" y="183" text-anchor="middle">Edinburg</text>
+      <path d="M604 308l4-110" fill="none" stroke="#161616" stroke-width="4"/>
+    </g>
+    <g>
+      <circle cx="754" cy="387" r="12" fill="#ffffff" stroke="#161616" stroke-width="5"/>
+      <rect x="739" y="412" width="95" height="48" fill="#fffdf8" stroke="#161616" stroke-width="4"/>
+      <text x="787" y="445" text-anchor="middle">Pharr</text>
+      <path d="M762 401l18 11" fill="none" stroke="#161616" stroke-width="4"/>
+    </g>
+    <g>
+      <circle cx="890" cy="419" r="12" fill="#d96b1d" stroke="#161616" stroke-width="5"/>
+      <rect x="829" y="498" width="126" height="48" fill="#fffdf8" stroke="#161616" stroke-width="4"/>
+      <text x="892" y="531" text-anchor="middle">Weslaco</text>
+      <path d="M891 435l0 63" fill="none" stroke="#161616" stroke-width="4"/>
+    </g>
+    <g>
+      <circle cx="1052" cy="373" r="12" fill="#d96b1d" stroke="#161616" stroke-width="5"/>
+      <rect x="996" y="231" width="141" height="48" fill="#fffdf8" stroke="#161616" stroke-width="4"/>
+      <text x="1067" y="264" text-anchor="middle">Harlingen</text>
+      <path d="M1054 358l10-79" fill="none" stroke="#161616" stroke-width="4"/>
+    </g>
+    <g>
+      <circle cx="1185" cy="437" r="12" fill="#d96b1d" stroke="#161616" stroke-width="5"/>
+      <rect x="1115" y="496" width="164" height="48" fill="#fffdf8" stroke="#161616" stroke-width="4"/>
+      <text x="1197" y="529" text-anchor="middle">Brownsville</text>
+      <path d="M1189 452l6 44" fill="none" stroke="#161616" stroke-width="4"/>
+    </g>
+  </g>
+
+  <g font-family="Barlow, Arial, sans-serif" fill="#161616">
+    <text x="86" y="95" font-size="48" font-weight="800">Rio Grande Valley Service Radius</text>
+    <text x="88" y="136" font-size="25" font-weight="700">Local decorative concrete scheduling across the main Valley cities.</text>
+    <text x="700" y="666" text-anchor="middle" font-size="31" font-weight="800" letter-spacing="0.8">Others cities upon request &amp; project approval.</text>
+  </g>
+</svg>
