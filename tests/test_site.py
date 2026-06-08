@@ -139,6 +139,11 @@ class SiteBuildTests(unittest.TestCase):
       msg="Homepage should keep the below-the-fold trust block that replaced the overloaded hero proof",
     )
 
+  def test_contact_coverage_map_does_not_depend_on_google_embed(self) -> None:
+    text = read_text(ROOT / "contact.html")
+    self.assertIn('class="coverage-map"', text, msg="Contact page should render a local coverage map")
+    self.assertNotIn("google.com/maps", text, msg="Coverage map should not depend on a Google Maps iframe")
+
   def test_shared_js_has_valid_syntax(self) -> None:
     subprocess.run(
       ["node", "--check", str(ROOT / "assets/js/site.js")],
