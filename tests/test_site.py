@@ -58,6 +58,17 @@ def read_text(path: Path) -> str:
   return path.read_text(encoding="utf-8")
 
 
+def resolve_local_reference(page_path: Path, ref: str) -> Path | None:
+  ref_file = ref.split("#", 1)[0]
+  if not ref_file or ref_file.startswith(("http://", "https://", "mailto:", "tel:", "#")):
+    return None
+  if ref_file.startswith("/_vercel/"):
+    return None
+  if ref_file.startswith("/"):
+    return ROOT / ref_file.removeprefix("/")
+  return page_path.parent / ref_file
+
+
 class SiteBuildTests(unittest.TestCase):
   def test_expected_pages_exist(self) -> None:
     self.assertEqual({path.name for path in HTML_FILES}, EXPECTED_PAGES)
@@ -71,8 +82,8 @@ class SiteBuildTests(unittest.TestCase):
       text = read_text(path)
       self.assertIn("<!doctype html>", text.lower(), msg=f"{path.name} is missing doctype")
       self.assertIn('<main id="main-content">', text, msg=f"{path.name} is missing main landmark")
-      self.assertIn('src="assets/js/site.js"', text, msg=f"{path.name} is missing shared site.js")
-      self.assertIn('href="assets/css/styles.css"', text, msg=f"{path.name} is missing shared stylesheet")
+      self.assertIn('src="/assets/js/site.js"', text, msg=f"{path.name} is missing shared site.js")
+      self.assertIn('href="/assets/css/styles.css"', text, msg=f"{path.name} is missing shared stylesheet")
       for mount in EXPECTED_MOUNTS:
         self.assertIn(mount, text, msg=f"{path.name} is missing {mount}")
       for snippet in EXPECTED_META_SNIPPETS:
@@ -91,10 +102,10 @@ class SiteBuildTests(unittest.TestCase):
     pattern = re.compile(r'(?:href|src)="([^"]+)"')
     for path in HTML_FILES:
       for ref in pattern.findall(read_text(path)):
-        if ref.startswith(("http://", "https://", "mailto:", "tel:", "#")):
+        local_path = resolve_local_reference(path, ref)
+        if local_path is None:
           continue
-        ref_file = ref.split("#", 1)[0]
-        self.assertTrue((path.parent / ref_file).exists(), msg=f"{path.name} references missing file {ref}")
+        self.assertTrue(local_path.exists(), msg=f"{path.name} references missing file {ref}")
 
   def test_placeholder_images_have_replace_comments(self) -> None:
     image_pattern = re.compile(r'<img[^>]+src="assets/img/(?!site/)[^"]+"')

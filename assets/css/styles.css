@@ -1907,6 +1907,8 @@ ol {
   .hero--home .hero__eyebrow {
     color: #fff;
     animation: textPulseMobile 4s ease-in-out infinite;
+  }
+
   .hero--home h1 {
     font-size: clamp(2.4rem, 9vw, 3.1rem); /* ~41px at 390px vs ~66px before */
     line-height: 1.05;
