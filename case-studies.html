@@ -24,7 +24,6 @@
     <meta name="theme-color" content="#161616" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png" />
-    <link rel="preload" as="image" href="/assets/img/site/polished/polished-commercial-wide.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -82,10 +81,10 @@
       <main id="main-content">
         <section class="page-hero">
           <div class="page-hero__media" aria-hidden="true">
-            <picture style="display:block;width:100%;height:100%">
+            <picture>
               <source type="image/webp" srcset="/assets/img/site/polished/polished-commercial-wide-480.webp 480w, /assets/img/site/polished/polished-commercial-wide-800.webp 800w, /assets/img/site/polished/polished-commercial-wide-1200.webp 1200w, /assets/img/site/polished/polished-commercial-wide-1600.webp 1600w, /assets/img/site/polished/polished-commercial-wide.webp 2000w" sizes="100vw" />
               <source type="image/jpeg" srcset="/assets/img/site/polished/polished-commercial-wide-480.jpg 480w, /assets/img/site/polished/polished-commercial-wide-800.jpg 800w, /assets/img/site/polished/polished-commercial-wide-1200.jpg 1200w, /assets/img/site/polished/polished-commercial-wide-1600.jpg 1600w, /assets/img/site/polished/polished-commercial-wide.jpg 2000w" sizes="100vw" />
-            <img class="page-hero__image" src="/assets/img/site/polished/polished-commercial-wide.jpg" alt="" width="2000" height="1500" fetchpriority="high" />
+              <img class="page-hero__image" src="/assets/img/site/polished/polished-commercial-wide.jpg" alt="" width="2000" height="1500" fetchpriority="high" />
             </picture>
           </div>
           <div class="container-wide page-hero__inner">
@@ -112,7 +111,7 @@
 
         <section class="section">
           <div class="container-wide reveal">
-            <div class="split-heading">
+            <div class="split-heading split-heading--stack">
               <div class="split-heading__lead flow">
                 <span class="eyebrow">Project Profiles</span>
                 <h2>Project Profiles From Across The Rio Grande Valley</h2>
@@ -130,7 +129,7 @@
                   <picture>
                     <source type="image/webp" srcset="/assets/img/site/staining/stained-patio-wide-480.webp 480w, /assets/img/site/staining/stained-patio-wide-800.webp 800w, /assets/img/site/staining/stained-patio-wide-1200.webp 1200w, /assets/img/site/staining/stained-patio-wide-1600.webp 1600w, /assets/img/site/staining/stained-patio-wide.webp 1800w" sizes="(max-width: 767px) 100vw, (max-width: 980px) 100vw, 680px" />
                     <source type="image/jpeg" srcset="/assets/img/site/staining/stained-patio-wide-480.jpg 480w, /assets/img/site/staining/stained-patio-wide-800.jpg 800w, /assets/img/site/staining/stained-patio-wide-1200.jpg 1200w, /assets/img/site/staining/stained-patio-wide-1600.jpg 1600w, /assets/img/site/staining/stained-patio-wide.jpg 1800w" sizes="(max-width: 767px) 100vw, (max-width: 980px) 100vw, 680px" />
-                    <img src="/assets/img/site/staining/stained-patio-wide.jpg" alt="Stained concrete patio in the Rio Grande Valley" width="1800" height="1004" />
+                    <img src="/assets/img/site/staining/stained-patio-wide.jpg" alt="Stained concrete patio in the Rio Grande Valley" width="1800" height="1004" loading="lazy" decoding="async" />
                   </picture>
                 </div>
                 <div class="project-card__body">
@@ -150,7 +149,7 @@
                   <picture>
                     <source type="image/webp" srcset="/assets/img/site/polished/polished-commercial-wide-480.webp 480w, /assets/img/site/polished/polished-commercial-wide-800.webp 800w, /assets/img/site/polished/polished-commercial-wide-1200.webp 1200w, /assets/img/site/polished/polished-commercial-wide-1600.webp 1600w, /assets/img/site/polished/polished-commercial-wide.webp 2000w" sizes="(max-width: 767px) 100vw, (max-width: 980px) 100vw, 680px" />
                     <source type="image/jpeg" srcset="/assets/img/site/polished/polished-commercial-wide-480.jpg 480w, /assets/img/site/polished/polished-commercial-wide-800.jpg 800w, /assets/img/site/polished/polished-commercial-wide-1200.jpg 1200w, /assets/img/site/polished/polished-commercial-wide-1600.jpg 1600w, /assets/img/site/polished/polished-commercial-wide.jpg 2000w" sizes="(max-width: 767px) 100vw, (max-width: 980px) 100vw, 680px" />
-                    <img src="/assets/img/site/polished/polished-commercial-wide.jpg" alt="Polished concrete case study image using client-supplied photography" width="2000" height="1500" />
+                    <img src="/assets/img/site/polished/polished-commercial-wide.jpg" alt="Polished concrete case study image using client-supplied photography" width="2000" height="1500" loading="lazy" decoding="async" />
                   </picture>
                 </div>
                 <div class="project-card__body">
@@ -170,7 +169,7 @@
                   <picture>
                     <source type="image/webp" srcset="/assets/img/site/garage/garage-flake-interior-480.webp 480w, /assets/img/site/garage/garage-flake-interior-800.webp 800w, /assets/img/site/garage/garage-flake-interior-1200.webp 1200w, /assets/img/site/garage/garage-flake-interior.webp 1600w" sizes="(max-width: 767px) 100vw, (max-width: 980px) 100vw, 680px" />
                     <source type="image/jpeg" srcset="/assets/img/site/garage/garage-flake-interior-480.jpg 480w, /assets/img/site/garage/garage-flake-interior-800.jpg 800w, /assets/img/site/garage/garage-flake-interior-1200.jpg 1200w, /assets/img/site/garage/garage-flake-interior.jpg 1600w" sizes="(max-width: 767px) 100vw, (max-width: 980px) 100vw, 680px" />
-                    <img src="/assets/img/site/garage/garage-flake-interior.jpg" alt="Epoxy flooring case study image using client-supplied flake floor photography" width="1200" height="1600" />
+                    <img src="/assets/img/site/garage/garage-flake-interior.jpg" alt="Epoxy flooring case study image using client-supplied flake floor photography" width="1200" height="1600" loading="lazy" decoding="async" />
                   </picture>
                 </div>
                 <div class="project-card__body">
@@ -190,7 +189,7 @@
                   <picture>
                     <source type="image/webp" srcset="/assets/img/site/decorative/metallic-wide-480.webp 480w, /assets/img/site/decorative/metallic-wide-800.webp 800w, /assets/img/site/decorative/metallic-wide-1200.webp 1200w, /assets/img/site/decorative/metallic-wide.webp 1600w" sizes="(max-width: 767px) 100vw, (max-width: 980px) 100vw, 680px" />
                     <source type="image/jpeg" srcset="/assets/img/site/decorative/metallic-wide-480.jpg 480w, /assets/img/site/decorative/metallic-wide-800.jpg 800w, /assets/img/site/decorative/metallic-wide-1200.jpg 1200w, /assets/img/site/decorative/metallic-wide.jpg 1600w" sizes="(max-width: 767px) 100vw, (max-width: 980px) 100vw, 680px" />
-                    <img src="/assets/img/site/decorative/metallic-wide.jpg" alt="Decorative coating case study image using client-supplied metallic floor photography" width="1600" height="1200" />
+                    <img src="/assets/img/site/decorative/metallic-wide.jpg" alt="Decorative coating case study image using client-supplied metallic floor photography" width="1600" height="1200" loading="lazy" decoding="async" />
                   </picture>
                 </div>
                 <div class="project-card__body">
@@ -210,7 +209,7 @@
                   <picture>
                     <source type="image/webp" srcset="/assets/img/site/garage/garage-flake-exterior-480.webp 480w, /assets/img/site/garage/garage-flake-exterior-800.webp 800w, /assets/img/site/garage/garage-flake-exterior-1200.webp 1200w, /assets/img/site/garage/garage-flake-exterior.webp 1600w" sizes="(max-width: 767px) 100vw, (max-width: 980px) 100vw, 680px" />
                     <source type="image/jpeg" srcset="/assets/img/site/garage/garage-flake-exterior-480.jpg 480w, /assets/img/site/garage/garage-flake-exterior-800.jpg 800w, /assets/img/site/garage/garage-flake-exterior-1200.jpg 1200w, /assets/img/site/garage/garage-flake-exterior.jpg 1600w" sizes="(max-width: 767px) 100vw, (max-width: 980px) 100vw, 680px" />
-                    <img src="/assets/img/site/garage/garage-flake-exterior.jpg" alt="Garage floor coating case study image using client-supplied flake floor photography" width="1600" height="1200" />
+                    <img src="/assets/img/site/garage/garage-flake-exterior.jpg" alt="Garage floor coating case study image using client-supplied flake floor photography" width="1600" height="1200" loading="lazy" decoding="async" />
                   </picture>
                 </div>
                 <div class="project-card__body">
@@ -230,7 +229,7 @@
                   <picture>
                     <source type="image/webp" srcset="/assets/img/site/staining/stained-patio-wide-480.webp 480w, /assets/img/site/staining/stained-patio-wide-800.webp 800w, /assets/img/site/staining/stained-patio-wide-1200.webp 1200w, /assets/img/site/staining/stained-patio-wide-1600.webp 1600w, /assets/img/site/staining/stained-patio-wide.webp 1800w" sizes="(max-width: 767px) 100vw, (max-width: 980px) 100vw, 680px" />
                     <source type="image/jpeg" srcset="/assets/img/site/staining/stained-patio-wide-480.jpg 480w, /assets/img/site/staining/stained-patio-wide-800.jpg 800w, /assets/img/site/staining/stained-patio-wide-1200.jpg 1200w, /assets/img/site/staining/stained-patio-wide-1600.jpg 1600w, /assets/img/site/staining/stained-patio-wide.jpg 1800w" sizes="(max-width: 767px) 100vw, (max-width: 980px) 100vw, 680px" />
-                    <img src="/assets/img/site/staining/stained-patio-wide.jpg" alt="Stained concrete patio project profile" width="1800" height="1004" />
+                    <img src="/assets/img/site/staining/stained-patio-wide.jpg" alt="Stained concrete patio project profile" width="1800" height="1004" loading="lazy" decoding="async" />
                   </picture>
                 </div>
                 <div class="project-card__body">
