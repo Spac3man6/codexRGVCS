@@ -15,8 +15,6 @@ The site keeps the Craftsman-inspired structure from the reference analysis but 
   - Primary text, borders, header depth, and structural contrast
 - `--ink-soft`: `#2c2c2c`
   - Footer surfaces and secondary dark backgrounds
-- `--slab`: `#d7d1c7`
-  - Warm concrete-like support tone
 - `--stone`: `#ece7df`
   - Light neutral panel background for cards and galleries
 - `--sand`: `#f6f1e8`
@@ -27,8 +25,8 @@ The site keeps the Craftsman-inspired structure from the reference analysis but 
   - Primary CTA color and key highlight color
 - `--accent-deep`: `#b95510`
   - Hover and pressed accent state
-- `--accent-soft`: `rgba(217, 107, 29, 0.16)`
-  - Focus and subtle accent wash
+- `--muted`: `rgba(22, 22, 22, 0.7)`
+  - Secondary body copy and captions
 
 ## Palette Rationale
 

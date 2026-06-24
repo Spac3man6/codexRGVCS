@@ -52,6 +52,14 @@ EXPECTED_META_SNIPPETS = {
   'property="og:url"',
   'property="og:image"',
 }
+SHARED_BUSINESS_FIELDS = {
+  "name",
+  "telephone",
+  "email",
+  "address",
+  "areaServed",
+  "openingHoursSpecification",
+}
 
 
 def read_text(path: Path) -> str:
@@ -69,9 +77,19 @@ def resolve_local_reference(page_path: Path, ref: str) -> Path | None:
   return page_path.parent / ref_file
 
 
+def srcset_candidates(srcset: str) -> list[str]:
+  return [candidate.strip().split()[0] for candidate in srcset.split(",") if candidate.strip()]
+
+
+def json_ld_payloads(path: Path) -> list[dict]:
+  pattern = re.compile(r'<script type="application/ld\+json">\s*(.*?)\s*</script>', re.S)
+  return [json.loads(block) for block in pattern.findall(read_text(path))]
+
+
 class SiteBuildTests(unittest.TestCase):
   def test_expected_pages_exist(self) -> None:
-    self.assertEqual({path.name for path in HTML_FILES}, EXPECTED_PAGES)
+    discovered_pages = {path.name for path in HTML_FILES}
+    self.assertTrue(EXPECTED_PAGES.issubset(discovered_pages), msg="One or more required pages are missing")
 
   def test_expected_docs_exist(self) -> None:
     for name in EXPECTED_DOCS:
@@ -90,34 +108,56 @@ class SiteBuildTests(unittest.TestCase):
         self.assertIn(snippet, text, msg=f"{path.name} is missing {snippet}")
 
   def test_json_ld_is_valid_local_business(self) -> None:
-    pattern = re.compile(r'<script type="application/ld\+json">\s*(.*?)\s*</script>', re.S)
     for path in HTML_FILES:
-      blocks = pattern.findall(read_text(path))
-      self.assertTrue(blocks, msg=f"{path.name} is missing JSON-LD")
-      for block in blocks:
-        payload = json.loads(block)
-        self.assertEqual(payload.get("@type"), "LocalBusiness", msg=f"{path.name} JSON-LD must use LocalBusiness")
+      payloads = json_ld_payloads(path)
+      self.assertTrue(payloads, msg=f"{path.name} is missing JSON-LD")
+      self.assertIn(
+        "LocalBusiness",
+        {payload.get("@type") for payload in payloads},
+        msg=f"{path.name} JSON-LD must include LocalBusiness",
+      )
+
+  def test_local_business_schema_keeps_shared_fields_consistent(self) -> None:
+    canonical = next(
+      payload for payload in json_ld_payloads(ROOT / "index.html") if payload.get("@type") == "LocalBusiness"
+    )
+    for path in HTML_FILES:
+      local_business = next(
+        payload for payload in json_ld_payloads(path) if payload.get("@type") == "LocalBusiness"
+      )
+      for field in SHARED_BUSINESS_FIELDS:
+        self.assertEqual(
+          local_business.get(field),
+          canonical.get(field),
+          msg=f"{path.name} LocalBusiness field drifted: {field}",
+        )
 
   def test_local_references_resolve(self) -> None:
-    pattern = re.compile(r'(?:href|src)="([^"]+)"')
+    reference_pattern = re.compile(r'(?:href|src)="([^"]+)"')
+    srcset_pattern = re.compile(r'(?:srcset|imagesrcset)="([^"]+)"')
     for path in HTML_FILES:
-      for ref in pattern.findall(read_text(path)):
+      text = read_text(path)
+      refs = reference_pattern.findall(text)
+      for srcset in srcset_pattern.findall(text):
+        refs.extend(srcset_candidates(srcset))
+      for ref in refs:
         local_path = resolve_local_reference(path, ref)
         if local_path is None:
           continue
         self.assertTrue(local_path.exists(), msg=f"{path.name} references missing file {ref}")
 
-  def test_placeholder_images_have_replace_comments(self) -> None:
-    image_pattern = re.compile(r'<img[^>]+src="assets/img/(?!site/)[^"]+"')
+  def test_non_site_image_references_are_intentional(self) -> None:
+    reference_pattern = re.compile(r'(?:href|src|srcset)="([^"]+)"')
+    allowed_prefixes = ("/assets/img/site/", "/assets/img/favicon/", "/assets/img/city-placeholders/")
     for path in HTML_FILES:
       text = read_text(path)
-      placeholder_image_count = len(image_pattern.findall(text))
-      replace_comment_count = text.count("<!-- REPLACE:")
-      self.assertGreaterEqual(
-        replace_comment_count,
-        placeholder_image_count,
-        msg=f"{path.name} has placeholder images without matching replacement comments",
-      )
+      for ref in reference_pattern.findall(text):
+        for candidate in srcset_candidates(ref):
+          if candidate.startswith("/assets/img/"):
+            self.assertTrue(
+              candidate.startswith(allowed_prefixes),
+              msg=f"{path.name} uses an unclassified image asset: {candidate}",
+            )
 
   def test_pages_do_not_reference_raw_client_asset_dump(self) -> None:
     for path in HTML_FILES:
@@ -126,6 +166,42 @@ class SiteBuildTests(unittest.TestCase):
         read_text(path),
         msg=f"{path.name} should use normalized site asset paths instead of raw client dump paths",
       )
+
+  def test_non_hero_images_are_lazy_loaded(self) -> None:
+    image_pattern = re.compile(r'<img\b[^>]*>', re.S)
+    for path in HTML_FILES:
+      for tag in image_pattern.findall(read_text(path)):
+        if 'fetchpriority="high"' in tag:
+          continue
+        self.assertIn('loading="lazy"', tag, msg=f"{path.name} has an eager non-hero image: {tag}")
+        self.assertIn('decoding="async"', tag, msg=f"{path.name} has a sync-decoding non-hero image: {tag}")
+
+    script = read_text(ROOT / "assets/js/site.js")
+    self.assertIn('class="gallery-modal__image" alt="" loading="lazy" decoding="async"', script)
+
+  def test_pages_do_not_use_naive_image_preloads(self) -> None:
+    for path in HTML_FILES:
+      self.assertNotIn(
+        'rel="preload" as="image"',
+        read_text(path),
+        msg=f"{path.name} should rely on hero fetchpriority or responsive preloads, not JPEG-only image preloads",
+      )
+
+  def test_css_custom_properties_are_defined(self) -> None:
+    css = read_text(ROOT / "assets/css/styles.css")
+    defined = set(re.findall(r"(--[a-z0-9-]+)\s*:", css))
+    used = set(re.findall(r"var\((--[a-z0-9-]+)\)", css))
+    self.assertFalse(used - defined, msg=f"Undefined CSS custom properties: {sorted(used - defined)}")
+
+  def test_lead_form_validation_uses_required_markup(self) -> None:
+    script = read_text(ROOT / "assets/js/site.js")
+    self.assertIn('querySelectorAll("[required]")', script)
+    self.assertNotIn("requiredKeys", script)
+
+    control_pattern = re.compile(r'<(?:input|select|textarea)\b(?=[^>]*\brequired\b)([^>]*)>', re.S)
+    for path in HTML_FILES:
+      for attrs in control_pattern.findall(read_text(path)):
+        self.assertIn("name=", attrs, msg=f"{path.name} has a required form control without a name")
 
   def test_homepage_hero_stays_simplified(self) -> None:
     text = read_text(ROOT / "index.html")

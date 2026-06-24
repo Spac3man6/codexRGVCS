@@ -64,9 +64,9 @@ The suite checks:
 
 - required page and documentation files
 - required shared mounts and SEO shell
-- valid LocalBusiness JSON-LD
-- local asset and internal file references
-- placeholder image replacement comments
+- valid LocalBusiness JSON-LD with consistent shared business fields
+- local asset, responsive `srcset`, and internal file references
+- intentional image asset paths and lazy loading for non-hero images
 - shared JS syntax
 - sitemap XML validity
 - presence of the client asset drop

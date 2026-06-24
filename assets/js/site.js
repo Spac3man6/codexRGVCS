@@ -32,6 +32,7 @@ const siteConfig = {
 
 const page = document.body.dataset.page || "home";
 const serviceKey = document.body.dataset.service || "";
+const mobileNavMaxWidth = 1200;
 
 function renderSiteHeader() {
   const headerMount = document.querySelector("[data-site-header]");
@@ -98,6 +99,10 @@ function renderSiteFooter() {
   const footerMount = document.querySelector("[data-site-footer]");
   if (!footerMount) return;
 
+  const footerServiceLinks = siteConfig.services
+    .map((service) => `<li><a class="footer-link" href="${service.href}">${service.label.toLowerCase()}</a></li>`)
+    .join("");
+
   footerMount.innerHTML = `
     <footer class="site-footer">
       <div class="container-wide site-footer__inner">
@@ -109,11 +114,7 @@ function renderSiteFooter() {
           <section>
             <h2 class="site-footer__title">Signature Finishes</h2>
             <ul class="site-footer__list">
-              <li><a class="footer-link" href="concrete-staining.html">Concrete staining</a></li>
-              <li><a class="footer-link" href="concrete-polishing.html">Concrete polishing</a></li>
-              <li><a class="footer-link" href="epoxy-flooring.html">Epoxy flooring</a></li>
-              <li><a class="footer-link" href="decorative-coatings.html">Decorative coatings</a></li>
-              <li><a class="footer-link" href="garage-floor-coatings.html">Garage floor coatings</a></li>
+              ${footerServiceLinks}
             </ul>
           </section>
           <section>
@@ -295,7 +296,7 @@ function initNavigation() {
     if (!trigger) return;
 
     trigger.addEventListener("click", (event) => {
-      if (window.innerWidth > 1200) return;
+      if (window.innerWidth > mobileNavMaxWidth) return;
 
       event.preventDefault();
       const isOpen = dropdown.classList.contains("is-open");
@@ -309,12 +310,12 @@ function initNavigation() {
     if (!(target instanceof Element)) return;
 
     if (!target.closest("[data-site-nav]") && !target.closest("[data-menu-toggle]")) {
-      if (window.innerWidth <= 1200) closeNav();
+      if (window.innerWidth <= mobileNavMaxWidth) closeNav();
     }
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 1200) closeNav();
+    if (window.innerWidth > mobileNavMaxWidth) closeNav();
   });
 }
 
@@ -418,7 +419,7 @@ function initGallery() {
       <button class="gallery-modal__nav gallery-modal__nav--prev" type="button" aria-label="Previous image" data-gallery-prev>&larr;</button>
       <button class="gallery-modal__nav gallery-modal__nav--next" type="button" aria-label="Next image" data-gallery-next>&rarr;</button>
       <div class="gallery-modal__frame">
-        <img class="gallery-modal__image" alt="" />
+        <img class="gallery-modal__image" alt="" loading="lazy" decoding="async" />
         <p class="gallery-modal__caption"></p>
       </div>
     </div>
@@ -495,9 +496,10 @@ function initForms() {
     const citySelect = form.querySelector('select[name="city"]');
     const otherCityField = form.querySelector("[data-other-city-field]");
     const otherCityInput = otherCityField ? otherCityField.querySelector("input") : null;
+    let syncOtherCity = () => {};
 
     if (citySelect instanceof HTMLSelectElement && otherCityField instanceof HTMLElement && otherCityInput instanceof HTMLInputElement) {
-      const syncOtherCity = () => {
+      syncOtherCity = () => {
         const needsOtherCity = citySelect.value === "Other";
         otherCityField.hidden = !needsOtherCity;
         otherCityInput.required = needsOtherCity;
@@ -519,8 +521,12 @@ function initForms() {
 
       const data = new FormData(htmlForm);
       const fields = Object.fromEntries(data.entries());
-      const requiredKeys = ["name", "email", "phone", "city", "service", "message"];
-      const missing = requiredKeys.find((key) => !String(fields[key] || "").trim());
+      const missing = Array.from(htmlForm.querySelectorAll("[required]")).find((control) => {
+        if (!(control instanceof HTMLInputElement || control instanceof HTMLSelectElement || control instanceof HTMLTextAreaElement)) {
+          return false;
+        }
+        return !String(control.value || "").trim();
+      });
 
       if (missing) {
         status.textContent = "Please complete every required field before requesting pricing.";
@@ -559,9 +565,10 @@ function initForms() {
             status.textContent = "Thank you — your request was sent. We'll be in touch shortly.";
             status.className = "lead-form__status is-success";
             htmlForm.reset();
+            syncOtherCity();
             return;
           }
-          return response.json().then((data) => {
+          return response.json().catch(() => ({})).then((data) => {
             const errors = data && Array.isArray(data.errors) ? data.errors : [];
             status.textContent = errors.length
               ? errors.map((err) => err.message).join(" ")
