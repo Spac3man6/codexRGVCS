@@ -86,6 +86,13 @@ def json_ld_payloads(path: Path) -> list[dict]:
   return [json.loads(block) for block in pattern.findall(read_text(path))]
 
 
+def type_set(payload: dict) -> set[str]:
+  value = payload.get("@type")
+  if isinstance(value, list):
+    return set(value)
+  return {value}
+
+
 class SiteBuildTests(unittest.TestCase):
   def test_expected_pages_exist(self) -> None:
     discovered_pages = {path.name for path in HTML_FILES}
@@ -111,19 +118,18 @@ class SiteBuildTests(unittest.TestCase):
     for path in HTML_FILES:
       payloads = json_ld_payloads(path)
       self.assertTrue(payloads, msg=f"{path.name} is missing JSON-LD")
-      self.assertIn(
-        "LocalBusiness",
-        {payload.get("@type") for payload in payloads},
+      self.assertTrue(
+        any("LocalBusiness" in type_set(payload) for payload in payloads),
         msg=f"{path.name} JSON-LD must include LocalBusiness",
       )
 
   def test_local_business_schema_keeps_shared_fields_consistent(self) -> None:
     canonical = next(
-      payload for payload in json_ld_payloads(ROOT / "index.html") if payload.get("@type") == "LocalBusiness"
+      payload for payload in json_ld_payloads(ROOT / "index.html") if "LocalBusiness" in type_set(payload)
     )
     for path in HTML_FILES:
       local_business = next(
-        payload for payload in json_ld_payloads(path) if payload.get("@type") == "LocalBusiness"
+        payload for payload in json_ld_payloads(path) if "LocalBusiness" in type_set(payload)
       )
       for field in SHARED_BUSINESS_FIELDS:
         self.assertEqual(
@@ -153,7 +159,7 @@ class SiteBuildTests(unittest.TestCase):
     for path in HTML_FILES:
       if path.name not in service_pages:
         continue
-      types = {payload.get("@type") for payload in json_ld_payloads(path)}
+      types = set().union(*(type_set(payload) for payload in json_ld_payloads(path)))
       self.assertIn("Service", types, msg=f"{path.name} is missing Service schema")
       self.assertIn("FAQPage", types, msg=f"{path.name} is missing FAQPage schema")
 
