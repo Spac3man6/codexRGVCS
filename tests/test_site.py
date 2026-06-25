@@ -132,6 +132,31 @@ class SiteBuildTests(unittest.TestCase):
           msg=f"{path.name} LocalBusiness field drifted: {field}",
         )
 
+  def test_canonical_and_og_urls_are_clean(self) -> None:
+    url_pattern = re.compile(r'(?:rel="canonical" href|property="og:url" content)="([^"]+)"')
+    for path in HTML_FILES:
+      for url in url_pattern.findall(read_text(path)):
+        if url.startswith("https://www.rgvconcretestain.com"):
+          self.assertFalse(
+            url.endswith(".html"),
+            msg=f"{path.name} uses a non-clean .html URL (cleanUrls serves extensionless): {url}",
+          )
+
+  def test_service_pages_have_service_and_faq_schema(self) -> None:
+    service_pages = {
+      "concrete-staining.html",
+      "concrete-polishing.html",
+      "epoxy-flooring.html",
+      "decorative-coatings.html",
+      "garage-floor-coatings.html",
+    }
+    for path in HTML_FILES:
+      if path.name not in service_pages:
+        continue
+      types = {payload.get("@type") for payload in json_ld_payloads(path)}
+      self.assertIn("Service", types, msg=f"{path.name} is missing Service schema")
+      self.assertIn("FAQPage", types, msg=f"{path.name} is missing FAQPage schema")
+
   def test_local_references_resolve(self) -> None:
     reference_pattern = re.compile(r'(?:href|src)="([^"]+)"')
     srcset_pattern = re.compile(r'(?:srcset|imagesrcset)="([^"]+)"')

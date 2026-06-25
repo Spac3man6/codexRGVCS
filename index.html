@@ -63,6 +63,10 @@
           { "@type": "City", "name": "Brownsville, Texas" },
           { "@type": "City", "name": "Weslaco, Texas" }
         ],
+        "openingHoursSpecification": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "08:00", "closes": "17:00" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "15:00" }
+        ],
         "serviceType": [
           "Concrete staining",
           "Concrete polishing",
@@ -76,6 +80,46 @@
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Which finish works best outdoors in the Valley?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Outdoor recommendations depend on sun exposure, slip expectations, concrete age, and whether the surface already has sealer or patching. Stain-and-seal systems, textured decorative coatings, and some coating builds can all work, but they are not interchangeable."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you work on older concrete that already has paint or sealer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Often yes, but the prep path changes. Old coatings, curing compounds, paint, adhesives, and moisture issues have to be identified first because they directly affect whether staining, polishing, or a new coating system is realistic."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you handle both homeowners and commercial clients?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The site is structured to support residential owners, designers, builders, and commercial operators because the Valley market often mixes those needs across remodels, tenant improvements, and new builds."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What helps you quote faster?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Square footage, concrete photos, whether the work is interior or exterior, known cracks or coatings, and a target schedule are the fastest way to narrow the right system before the first call."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body data-page="home">
     <div class="site-shell">

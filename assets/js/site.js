@@ -138,7 +138,7 @@ function renderSiteFooter() {
             <p><a class="footer-contact" href="tel:${siteConfig.phoneHref}">${siteConfig.phoneDisplay}</a></p>
             <p><a class="footer-contact" href="mailto:${siteConfig.email}">${siteConfig.email}</a></p>
             <p><a class="footer-contact" href="${siteConfig.pages.contact}#request-estimate">Schedule a call</a></p>
-            <p class="site-footer__hours">Mon-Fri, 7:00 AM to 5:00 PM</p>
+            <p class="site-footer__hours">Mon-Fri, 8:00 AM to 5:00 PM &middot; Sat, 9:00 AM to 3:00 PM</p>
           </section>
         </div>
       </div>
