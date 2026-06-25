@@ -11,6 +11,9 @@ build/
 
 tmp/
 
+# internal working notes / client-management drafts — local only, never push to client repo
+internal/
+
 **/.DS_Store
 *.skill
 red-team.skill
