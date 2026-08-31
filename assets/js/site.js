@@ -562,7 +562,7 @@ function initForms() {
       })
         .then((response) => {
           if (response.ok) {
-            status.textContent = "Thank you — your request was sent. We'll be in touch shortly.";
+            status.textContent = "Thank you. Your request was sent. We'll be in touch shortly.";
             status.className = "lead-form__status is-success";
             htmlForm.reset();
             syncOtherCity();
