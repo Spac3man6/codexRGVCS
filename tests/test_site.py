@@ -163,6 +163,34 @@ class SiteBuildTests(unittest.TestCase):
       self.assertIn("Service", types, msg=f"{path.name} is missing Service schema")
       self.assertIn("FAQPage", types, msg=f"{path.name} is missing FAQPage schema")
 
+  def test_any_page_with_service_schema_also_has_faq_schema(self) -> None:
+    # Generalizes the check above to every page, not just the original five service
+    # pages, so newer pages (city pages, servicios.html, future additions) that add a
+    # Service block are automatically held to the same pairing without editing this
+    # test's file list every time.
+    for path in HTML_FILES:
+      types = set().union(*(type_set(payload) for payload in json_ld_payloads(path)))
+      if "Service" in types:
+        self.assertIn(
+          "FAQPage",
+          types,
+          msg=f"{path.name} declares Service schema without FAQPage schema",
+        )
+
+  def test_pages_do_not_use_em_or_en_dashes(self) -> None:
+    # Standing house rule (CLAUDE.md): no em-dashes or en-dashes anywhere in shipped
+    # copy. This was previously enforced only by a manual grep sweep on each run, which
+    # let live violations sit in production undetected for weeks. Codifying it here.
+    banned_chars = ("–", "—")  # en dash, em dash
+    targets = list(HTML_FILES) + [ROOT / "assets/js/site.js"]
+    for path in targets:
+      text = read_text(path)
+      for lineno, line in enumerate(text.splitlines(), start=1):
+        if any(ch in line for ch in banned_chars):
+          self.fail(
+            f"{path.relative_to(ROOT)}:{lineno} uses a banned em/en-dash: {line.strip()[:140]!r}"
+          )
+
   def test_local_references_resolve(self) -> None:
     reference_pattern = re.compile(r'(?:href|src)="([^"]+)"')
     srcset_pattern = re.compile(r'(?:srcset|imagesrcset)="([^"]+)"')
@@ -265,6 +293,29 @@ class SiteBuildTests(unittest.TestCase):
       check=True,
       capture_output=True,
       text=True,
+    )
+
+  def test_sitemap_matches_html_pages_exactly(self) -> None:
+    # Every *.html file on disk should have exactly one matching sitemap entry, and
+    # every sitemap entry should point at a real page. Previously this was a manual
+    # eyeball count (19 pages vs. 19 <loc> entries) done by hand on each run.
+    base = "https://www.rgvconcretestain.com"
+
+    def expected_url(path: Path) -> str:
+      if path.stem == "index":
+        return f"{base}/"
+      return f"{base}/{path.stem}"
+
+    expected_urls = {expected_url(path) for path in HTML_FILES}
+    sitemap_urls = set(re.findall(r"<loc>([^<]+)</loc>", read_text(ROOT / "sitemap.xml")))
+
+    missing_from_sitemap = expected_urls - sitemap_urls
+    extra_in_sitemap = sitemap_urls - expected_urls
+    self.assertFalse(
+      missing_from_sitemap, msg=f"Pages missing from sitemap.xml: {sorted(missing_from_sitemap)}"
+    )
+    self.assertFalse(
+      extra_in_sitemap, msg=f"sitemap.xml references URLs with no matching page: {sorted(extra_in_sitemap)}"
     )
 
   def test_client_asset_drop_exists(self) -> None:
