@@ -14,6 +14,9 @@ tmp/
 # internal working notes / client-management drafts — local only, never push to client repo
 internal/
 
+# project memory for AI agents — local only, never push to client repo
+memory/
+
 **/.DS_Store
 *.skill
 red-team.skill
