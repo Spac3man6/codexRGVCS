@@ -13,26 +13,209 @@ const siteConfig = {
     "Brownsville",
     "Weslaco"
   ],
+  // Cities that have a dedicated landing page. Pharr and Weslaco have none yet,
+  // so they render as plain text in the footer instead of links.
+  cityPages: {
+    McAllen: "mcallen.html",
+    Edinburg: "edinburg.html",
+    Mission: "mission.html",
+    Harlingen: "harlingen.html",
+    Brownsville: "brownsville.html"
+  },
   pages: {
     home: "index.html",
     services: "services.html",
     gallery: "gallery.html",
     about: "about.html",
     contact: "contact.html",
-    caseStudies: "case-studies.html"
+    caseStudies: "case-studies.html",
+    faq: "faq.html"
+  },
+  // Spanish counterparts, used when document.documentElement.lang starts with "es".
+  pagesEs: {
+    home: "es.html",
+    services: "servicios.html",
+    gallery: "gallery.html",
+    about: "about.html",
+    contact: "contacto.html",
+    caseStudies: "case-studies.html",
+    faq: "faq.html"
   },
   services: [
-    { label: "Concrete Staining", href: "concrete-staining.html", key: "staining" },
-    { label: "Concrete Polishing", href: "concrete-polishing.html", key: "polishing" },
-    { label: "Epoxy Flooring", href: "epoxy-flooring.html", key: "epoxy" },
-    { label: "Decorative Coatings", href: "decorative-coatings.html", key: "decorative" },
-    { label: "Garage Floor Coatings", href: "garage-floor-coatings.html", key: "garage" }
+    { label: "Concrete Staining", labelEs: "Tinción de Concreto", href: "concrete-staining.html", key: "staining" },
+    { label: "Concrete Polishing", labelEs: "Pulido de Concreto", href: "concrete-polishing.html", key: "polishing" },
+    { label: "Epoxy Flooring", labelEs: "Pisos de Epóxico", href: "epoxy-flooring.html", key: "epoxy" },
+    { label: "Decorative Coatings", labelEs: "Recubrimientos Decorativos", href: "decorative-coatings.html", key: "decorative" },
+    { label: "Garage Floor Coatings", labelEs: "Recubrimientos para Piso de Garaje", href: "garage-floor-coatings.html", key: "garage" }
   ]
 };
 
+// Every user-facing string rendered by the shared chrome. Keyed by locale so the
+// header, footer, sticky bar, estimate modal, and lead-form status messages all
+// follow the page's own lang attribute instead of being hardcoded English.
+const siteCopy = {
+  en: {
+    skipToContent: "Skip to content",
+    openMenu: "Open menu",
+    brandHomeAria: "RGV Concrete Stain home",
+    navAria: "Primary",
+    navServices: "Services",
+    navGallery: "Gallery",
+    navCaseStudies: "Case Studies",
+    navAbout: "About",
+    navCall: "Call Us",
+    langCode: "ES",
+    footerBrandSub: "Premium Staining, Polishing, Epoxy, and Concrete Coatings",
+    footerFinishes: "Signature Finishes",
+    footerServiceArea: "Service Area",
+    footerProjectFit: "Project Fit",
+    fitResidential: "Homes, garages, patios, and poolside concrete",
+    fitCommercial: "Retail interiors, offices, restaurants, and hospitality floors",
+    fitBuilder: "Builder and GC turnover packages",
+    fitMaintenance: "Reseals, refinishing, polish maintenance, and coating refreshes",
+    footerCaseStudies: "View case studies",
+    footerFaq: "Common questions",
+    footerContact: "Contact",
+    footerSchedule: "Schedule a call",
+    footerHours: "Mon-Fri, 8:00 AM to 5:00 PM &middot; Sat, 9:00 AM to 3:00 PM",
+    footerEstimate: "Request an Estimate",
+    legalBefore: "All Rights Reserved &copy;",
+    legalAfter: "RGV Concrete Stain",
+    footerSitemap: "Sitemap",
+    stickySchedule: "Schedule a Call",
+    stickyPhone: "Speak with an Expert Now",
+    modalEyebrow: "Discuss Your Project",
+    modalTitle: "Get a Valley-Sized Estimate",
+    modalIntro: "Tell us about your project and we'll follow up with a custom estimate.",
+    modalClose: "Close",
+    fieldName: "Name",
+    fieldEmail: "Email",
+    fieldPhone: "Phone",
+    fieldCity: "Project City",
+    fieldService: "Service",
+    fieldSize: "Project Size",
+    fieldDetails: "Project Details",
+    selectCity: "Select a city",
+    selectService: "Choose a finish",
+    selectSize: "Select project size",
+    sizeSmall: "Under 500 sq. ft.",
+    sizeMedium: "500 - 1,500 sq. ft.",
+    sizeLarge: "1,500 - 5,000 sq. ft.",
+    sizeXl: "5,000+ sq. ft.",
+    detailsPlaceholder:
+      "Describe the condition of the concrete, finish you want, target schedule, and anything that should be quoted.",
+    submit: "Request Proposal",
+    formIncomplete: "Please complete every required field before requesting pricing.",
+    formEmail: "Enter a valid email address so the estimator can reply.",
+    formSending: "Sending your request…",
+    formSuccess: "Thank you. Your request was sent. We'll be in touch shortly.",
+    formFailed: "We couldn't send your request. Please call",
+    formNetwork: "Network error sending your request. Please call"
+  },
+  es: {
+    skipToContent: "Ir al contenido",
+    openMenu: "Abrir menú",
+    brandHomeAria: "Inicio de RGV Concrete Stain",
+    navAria: "Principal",
+    navServices: "Servicios",
+    navGallery: "Galería",
+    navCaseStudies: "Casos de Estudio",
+    navAbout: "Nosotros",
+    navCall: "Llámanos",
+    langCode: "EN",
+    footerBrandSub: "Tinción, Pulido, Epóxico y Recubrimientos de Concreto",
+    footerFinishes: "Acabados Principales",
+    footerServiceArea: "Área de Servicio",
+    footerProjectFit: "Tipos de Proyecto",
+    fitResidential: "Casas, garajes, patios y áreas de alberca",
+    fitCommercial: "Interiores comerciales, oficinas, restaurantes y pisos de hospitalidad",
+    fitBuilder: "Entregas para constructores y contratistas generales",
+    fitMaintenance: "Resellados, restauración, mantenimiento de pisos pulidos y renovación de recubrimientos",
+    footerCaseStudies: "Ver casos de estudio",
+    footerFaq: "Preguntas frecuentes",
+    footerContact: "Contacto",
+    footerSchedule: "Agendar una llamada",
+    footerHours: "Lun a Vie, 8:00 AM a 5:00 PM &middot; Sáb, 9:00 AM a 3:00 PM",
+    footerEstimate: "Solicitar una Cotización",
+    legalBefore: "&copy;",
+    legalAfter: "RGV Concrete Stain. Todos los derechos reservados.",
+    footerSitemap: "Mapa del sitio",
+    stickySchedule: "Agendar una Llamada",
+    stickyPhone: "Hablar con un Experto Ahora",
+    modalEyebrow: "Hablemos de tu Piso",
+    modalTitle: "Una Cotización a la Medida del Valle",
+    modalIntro: "Cuéntanos sobre tu proyecto y te enviamos una cotización personalizada.",
+    modalClose: "Cerrar",
+    fieldName: "Nombre",
+    fieldEmail: "Correo",
+    fieldPhone: "Teléfono",
+    fieldCity: "Ciudad del Proyecto",
+    fieldService: "Servicio",
+    fieldSize: "Tamaño del Proyecto",
+    fieldDetails: "Detalles del Proyecto",
+    selectCity: "Selecciona una ciudad",
+    selectService: "Elige un servicio",
+    selectSize: "Selecciona el tamaño",
+    sizeSmall: "Menos de 500 pies cuadrados",
+    sizeMedium: "500 a 1,500 pies cuadrados",
+    sizeLarge: "1,500 a 5,000 pies cuadrados",
+    sizeXl: "Más de 5,000 pies cuadrados",
+    detailsPlaceholder:
+      "Describe el estado del concreto, el acabado que buscas, la fecha deseada y cualquier detalle que debamos cotizar.",
+    submit: "Solicitar Cotización",
+    formIncomplete: "Completa todos los campos obligatorios antes de solicitar la cotización.",
+    formEmail: "Escribe un correo electrónico válido para que podamos responderte.",
+    formSending: "Enviando tu solicitud…",
+    formSuccess: "Gracias. Tu solicitud fue enviada. Te contactamos muy pronto.",
+    formFailed: "No pudimos enviar tu solicitud. Por favor llama al",
+    formNetwork: "No se pudo enviar. Revisa tu conexión y por favor llama al"
+  }
+};
+
 const page = document.body.dataset.page || "home";
+// Spanish pages use "home-es", "services-es", "contact-es". Normalize so aria-current works in both locales.
+const pageKey = String(page).replace(/-es$/, "");
 const serviceKey = document.body.dataset.service || "";
 const mobileNavMaxWidth = 1200;
+
+// Anything starting with "es" is Spanish. Anything else falls back to English so
+// an unexpected lang value degrades safely instead of rendering undefined strings.
+const locale = String(document.documentElement.lang || "en").toLowerCase().indexOf("es") === 0 ? "es" : "en";
+const copy = siteCopy[locale];
+const pages = locale === "es" ? siteConfig.pagesEs : siteConfig.pages;
+const serviceLabel = (service) => (locale === "es" ? service.labelEs : service.label);
+
+// Explicit counterpart map for the language toggle. Pages with no counterpart
+// fall back to the other language's homepage.
+const localeCounterparts = {
+  "index.html": "es.html",
+  "services.html": "servicios.html",
+  "contact.html": "contacto.html",
+  "es.html": "index.html",
+  "servicios.html": "services.html",
+  "contacto.html": "contact.html"
+};
+
+function currentFileName() {
+  const path = String(window.location.pathname || "").replace(/\/+$/, "");
+  const last = path.substring(path.lastIndexOf("/") + 1);
+  if (!last) return "index.html";
+  return last.endsWith(".html") ? last : last + ".html";
+}
+
+function languageToggleLabel() {
+  const hasCounterpart = Boolean(localeCounterparts[currentFileName()]);
+  if (locale === "es") {
+    return hasCounterpart ? "EN, view this page in English" : "EN, go to the English version of the site";
+  }
+  return hasCounterpart ? "ES, ver esta página en español" : "ES, ir a la versión en español del sitio";
+}
+
+function languageToggleHref() {
+  const counterpart = localeCounterparts[currentFileName()];
+  if (counterpart) return counterpart;
+  return locale === "es" ? "index.html" : "es.html";
+}
 
 function renderSiteHeader() {
   const headerMount = document.querySelector("[data-site-header]");
@@ -41,18 +224,18 @@ function renderSiteHeader() {
   const serviceLinks = siteConfig.services
     .map((service) => {
       const current = service.key === serviceKey ? ' aria-current="page"' : "";
-      return `<li><a class="dropdown-link" href="${service.href}"${current}>${service.label}</a></li>`;
+      return `<li><a class="dropdown-link" href="${service.href}"${current}>${serviceLabel(service)}</a></li>`;
     })
     .join("");
 
-  const pageCurrent = (key) => (page === key ? ' aria-current="page"' : "");
-  const servicesCurrent = page === "services" || serviceKey ? ' aria-current="page"' : "";
+  const pageCurrent = (key) => (pageKey === key ? ' aria-current="page"' : "");
+  const servicesCurrent = pageKey === "services" || serviceKey ? ' aria-current="page"' : "";
 
   headerMount.innerHTML = `
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <a class="skip-link" href="#main-content">${copy.skipToContent}</a>
     <header class="site-header" data-header>
       <div class="container-wide site-header__inner">
-        <a class="site-brand" href="${siteConfig.pages.home}" aria-label="RGV Concrete Stain home">
+        <a class="site-brand" href="${pages.home}" aria-label="${copy.brandHomeAria}">
           <span class="site-brand__mark">RGV Concrete Stain</span>
         </a>
         <button
@@ -62,14 +245,14 @@ function renderSiteHeader() {
           aria-controls="site-navigation"
           data-menu-toggle
         >
-          <span class="sr-only">Open menu</span>
+          <span class="sr-only">${copy.openMenu}</span>
           <span class="menu-toggle__bar" aria-hidden="true"></span>
         </button>
-        <nav class="site-nav" id="site-navigation" aria-label="Primary" data-site-nav>
+        <nav class="site-nav" id="site-navigation" aria-label="${copy.navAria}" data-site-nav>
           <ul class="site-nav__menu">
             <li class="site-nav__item nav-dropdown" data-nav-dropdown>
-              <a class="nav-link" href="${siteConfig.pages.services}"${servicesCurrent}>
-                Services
+              <a class="nav-link" href="${pages.services}"${servicesCurrent}>
+                ${copy.navServices}
                 <span class="nav-link__caret" aria-hidden="true"></span>
               </a>
               <ul class="dropdown-menu">
@@ -77,16 +260,19 @@ function renderSiteHeader() {
               </ul>
             </li>
             <li class="site-nav__item">
-              <a class="nav-link" href="${siteConfig.pages.gallery}"${pageCurrent("gallery")}>Gallery</a>
+              <a class="nav-link" href="${pages.gallery}"${pageCurrent("gallery")}>${copy.navGallery}</a>
             </li>
             <li class="site-nav__item">
-              <a class="nav-link" href="${siteConfig.pages.caseStudies}"${pageCurrent("caseStudies")}>Case Studies</a>
+              <a class="nav-link" href="${pages.caseStudies}"${pageCurrent("caseStudies")}>${copy.navCaseStudies}</a>
             </li>
             <li class="site-nav__item">
-              <a class="nav-link" href="${siteConfig.pages.about}"${pageCurrent("about")}>About</a>
+              <a class="nav-link" href="${pages.about}"${pageCurrent("about")}>${copy.navAbout}</a>
             </li>
             <li class="site-nav__item">
-              <a class="nav-contact" href="tel:${siteConfig.phoneHref}">Call Us</a>
+              <a class="nav-link" href="${languageToggleHref()}" lang="${locale === "es" ? "en" : "es"}" hreflang="${locale === "es" ? "en" : "es"}" aria-label="${languageToggleLabel()}">${copy.langCode}</a>
+            </li>
+            <li class="site-nav__item">
+              <a class="nav-contact" href="tel:${siteConfig.phoneHref}">${copy.navCall}</a>
             </li>
           </ul>
         </nav>
@@ -100,7 +286,17 @@ function renderSiteFooter() {
   if (!footerMount) return;
 
   const footerServiceLinks = siteConfig.services
-    .map((service) => `<li><a class="footer-link" href="${service.href}">${service.label.toLowerCase()}</a></li>`)
+    .map((service) => `<li><a class="footer-link" href="${service.href}">${serviceLabel(service)}</a></li>`)
+    .join("");
+
+  // Cities with a landing page become links. Pharr and Weslaco stay plain text.
+  const footerCityItems = siteConfig.serviceArea
+    .map((city) => {
+      const href = siteConfig.cityPages[city];
+      return href
+        ? `<li><a class="footer-link" href="${href}">${city}, Texas</a></li>`
+        : `<li>${city}, Texas</li>`;
+    })
     .join("");
 
   footerMount.innerHTML = `
@@ -108,47 +304,48 @@ function renderSiteFooter() {
       <div class="container-wide site-footer__inner">
         <div class="site-footer__brand">
           <span class="site-footer__brand-mark">RGV Concrete Stain</span>
-          <span class="site-footer__brand-sub">Premium Staining, Polishing, Epoxy, and Concrete Coatings</span>
+          <span class="site-footer__brand-sub">${copy.footerBrandSub}</span>
         </div>
         <div class="site-footer__grid">
           <section>
-            <h2 class="site-footer__title">Signature Finishes</h2>
+            <h2 class="site-footer__title">${copy.footerFinishes}</h2>
             <ul class="site-footer__list">
               ${footerServiceLinks}
             </ul>
           </section>
           <section>
-            <h2 class="site-footer__title">Service Area</h2>
+            <h2 class="site-footer__title">${copy.footerServiceArea}</h2>
             <ul class="site-footer__list">
-              ${siteConfig.serviceArea.map((city) => `<li>${city}, Texas</li>`).join("")}
+              ${footerCityItems}
             </ul>
           </section>
           <section>
-            <h2 class="site-footer__title">Project Fit</h2>
+            <h2 class="site-footer__title">${copy.footerProjectFit}</h2>
             <ul class="site-footer__list">
-              <li>Homes, garages, patios, and poolside concrete</li>
-              <li>Retail interiors, offices, restaurants, and hospitality floors</li>
-              <li>Builder and GC turnover packages</li>
-              <li>Reseals, refinishing, polish maintenance, and coating refreshes</li>
-              <li><a class="footer-link" href="${siteConfig.pages.caseStudies}">View case studies</a></li>
+              <li>${copy.fitResidential}</li>
+              <li>${copy.fitCommercial}</li>
+              <li>${copy.fitBuilder}</li>
+              <li>${copy.fitMaintenance}</li>
+              <li><a class="footer-link" href="${pages.caseStudies}">${copy.footerCaseStudies}</a></li>
+              <li><a class="footer-link" href="${pages.faq}">${copy.footerFaq}</a></li>
             </ul>
           </section>
           <section>
-            <h2 class="site-footer__title">Contact</h2>
+            <h2 class="site-footer__title">${copy.footerContact}</h2>
             <p><a class="footer-contact" href="tel:${siteConfig.phoneHref}">${siteConfig.phoneDisplay}</a></p>
             <p><a class="footer-contact" href="mailto:${siteConfig.email}">${siteConfig.email}</a></p>
-            <p><a class="footer-contact" href="${siteConfig.pages.contact}#request-estimate">Schedule a call</a></p>
-            <p class="site-footer__hours">Mon-Fri, 8:00 AM to 5:00 PM &middot; Sat, 9:00 AM to 3:00 PM</p>
+            <p><a class="footer-contact footer-link--estimate" href="${pages.contact}#request-estimate">${copy.footerSchedule}</a></p>
+            <p class="site-footer__hours">${copy.footerHours}</p>
           </section>
         </div>
       </div>
       <div class="site-footer__bottom">
         <div class="container-wide">
           <p class="site-footer__legal">
-            <a class="footer-link footer-link--estimate" href="${siteConfig.pages.contact}#request-estimate">Request an Estimate</a>
+            <a class="footer-link footer-link--estimate" href="${pages.contact}#request-estimate">${copy.footerEstimate}</a>
             <span class="site-footer__legal-copy">
-              All Rights Reserved &copy; <span data-current-year></span> RGV Concrete Stain |
-              <a class="footer-link" href="sitemap.xml">Sitemap</a>
+              ${copy.legalBefore} <span data-current-year></span> ${copy.legalAfter} |
+              <a class="footer-link" href="sitemap.xml">${copy.footerSitemap}</a>
             </span>
           </p>
         </div>
@@ -164,9 +361,9 @@ function renderStickyBar() {
   stickyMount.innerHTML = `
     <div class="sticky-bar" data-sticky-bar>
       <div class="container-wide sticky-bar__inner">
-        <button class="sticky-bar__link sticky-bar__link--schedule" type="button" data-open-estimate>Schedule a Call</button>
+        <button class="sticky-bar__link sticky-bar__link--schedule" type="button" data-open-estimate>${copy.stickySchedule}</button>
         <span class="sticky-bar__sep" aria-hidden="true">|</span>
-        <a class="sticky-bar__link sticky-bar__link--phone" href="tel:${siteConfig.phoneHref}">Speak with an Expert Now</a>
+        <a class="sticky-bar__link sticky-bar__link--phone" href="tel:${siteConfig.phoneHref}">${copy.stickyPhone}</a>
       </div>
     </div>
   `;
@@ -180,65 +377,65 @@ function renderEstimateModal() {
     <div class="modal" aria-hidden="true" data-estimate-modal-ui>
       <div class="modal__overlay" data-close-estimate></div>
       <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="estimate-modal-title">
-        <button class="modal__close" type="button" aria-label="Close" data-close-estimate>&times;</button>
+        <button class="modal__close" type="button" aria-label="${copy.modalClose}" data-close-estimate>&times;</button>
         <div class="modal__content">
           <div class="modal__intro flow">
-            <span class="eyebrow">Discuss Your Project</span>
-            <h2 id="estimate-modal-title">Get a Valley-Sized Estimate</h2>
+            <span class="eyebrow">${copy.modalEyebrow}</span>
+            <h2 id="estimate-modal-title">${copy.modalTitle}</h2>
             <p>
-              Tell us about your project and we'll follow up with a custom estimate.
+              ${copy.modalIntro}
             </p>
           </div>
           <form class="lead-form" data-lead-form="modal-estimate">
             <div class="lead-form__grid">
               <div class="lead-form__field">
-                <label for="estimate-name">Name</label>
+                <label for="estimate-name">${copy.fieldName}</label>
                 <input id="estimate-name" name="name" type="text" autocomplete="name" required />
               </div>
               <div class="lead-form__field">
-                <label for="estimate-email">Email</label>
+                <label for="estimate-email">${copy.fieldEmail}</label>
                 <input id="estimate-email" name="email" type="email" autocomplete="email" required />
               </div>
               <div class="lead-form__field">
-                <label for="estimate-phone">Phone</label>
+                <label for="estimate-phone">${copy.fieldPhone}</label>
                 <input id="estimate-phone" name="phone" type="tel" autocomplete="tel" required />
               </div>
               <div class="lead-form__field">
-                <label for="estimate-city">Project City</label>
+                <label for="estimate-city">${copy.fieldCity}</label>
                 <select id="estimate-city" name="city" required>
-                  <option value="">Select a city</option>
+                  <option value="">${copy.selectCity}</option>
                   ${siteConfig.serviceArea.map((city) => `<option value="${city}">${city}</option>`).join("")}
                 </select>
               </div>
               <div class="lead-form__field">
-                <label for="estimate-service">Service</label>
+                <label for="estimate-service">${copy.fieldService}</label>
                 <select id="estimate-service" name="service" required>
-                  <option value="">Choose a finish</option>
-                  ${siteConfig.services.map((service) => `<option value="${service.label}">${service.label}</option>`).join("")}
+                  <option value="">${copy.selectService}</option>
+                  ${siteConfig.services.map((service) => `<option value="${service.label}">${serviceLabel(service)}</option>`).join("")}
                 </select>
               </div>
               <div class="lead-form__field">
-                <label for="estimate-size">Project Size</label>
+                <label for="estimate-size">${copy.fieldSize}</label>
                 <select id="estimate-size" name="project-size" required>
-                  <option value="">Select project size</option>
-                  <option value="Under 500 sq. ft.">Under 500 sq. ft.</option>
-                  <option value="500 - 1,500 sq. ft.">500 - 1,500 sq. ft.</option>
-                  <option value="1,500 - 5,000 sq. ft.">1,500 - 5,000 sq. ft.</option>
-                  <option value="5,000+ sq. ft.">5,000+ sq. ft.</option>
+                  <option value="">${copy.selectSize}</option>
+                  <option value="Under 500 sq. ft.">${copy.sizeSmall}</option>
+                  <option value="500 - 1,500 sq. ft.">${copy.sizeMedium}</option>
+                  <option value="1,500 - 5,000 sq. ft.">${copy.sizeLarge}</option>
+                  <option value="5,000+ sq. ft.">${copy.sizeXl}</option>
                 </select>
               </div>
               <div class="lead-form__field lead-form__field--full">
-                <label for="estimate-message">Project Details</label>
+                <label for="estimate-message">${copy.fieldDetails}</label>
                 <textarea
                   id="estimate-message"
                   name="message"
-                  placeholder="Describe the condition of the concrete, finish you want, target schedule, and anything that should be quoted."
+                  placeholder="${copy.detailsPlaceholder}"
                   required
                 ></textarea>
               </div>
             </div>
             <div class="lead-form__status" data-form-status></div>
-            <button class="btn btn--primary" type="submit">Request Proposal</button>
+            <button class="btn btn--primary" type="submit">${copy.submit}</button>
           </form>
         </div>
       </div>
@@ -529,7 +726,7 @@ function initForms() {
       });
 
       if (missing) {
-        status.textContent = "Please complete every required field before requesting pricing.";
+        status.textContent = copy.formIncomplete;
         status.className = "lead-form__status is-error";
         return;
       }
@@ -537,7 +734,7 @@ function initForms() {
       const email = String(fields.email || "");
       const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
       if (!emailValid) {
-        status.textContent = "Enter a valid email address so the estimator can reply.";
+        status.textContent = copy.formEmail;
         status.className = "lead-form__status is-error";
         return;
       }
@@ -549,7 +746,7 @@ function initForms() {
         submittedAt: new Date().toISOString()
       };
 
-      status.textContent = "Sending your request…";
+      status.textContent = copy.formSending;
       status.className = "lead-form__status";
 
       fetch(siteConfig.formEndpoint, {
@@ -562,7 +759,7 @@ function initForms() {
       })
         .then((response) => {
           if (response.ok) {
-            status.textContent = "Thank you. Your request was sent. We'll be in touch shortly.";
+            status.textContent = copy.formSuccess;
             status.className = "lead-form__status is-success";
             htmlForm.reset();
             syncOtherCity();
@@ -572,12 +769,12 @@ function initForms() {
             const errors = data && Array.isArray(data.errors) ? data.errors : [];
             status.textContent = errors.length
               ? errors.map((err) => err.message).join(" ")
-              : `We couldn't send your request. Please call ${siteConfig.phoneDisplay}.`;
+              : `${copy.formFailed} ${siteConfig.phoneDisplay}.`;
             status.className = "lead-form__status is-error";
           });
         })
         .catch(() => {
-          status.textContent = `Network error sending your request. Please call ${siteConfig.phoneDisplay}.`;
+          status.textContent = `${copy.formNetwork} ${siteConfig.phoneDisplay}.`;
           status.className = "lead-form__status is-error";
         });
     });
