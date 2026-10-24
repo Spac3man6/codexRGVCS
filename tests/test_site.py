@@ -324,6 +324,37 @@ class SiteBuildTests(unittest.TestCase):
     files = [path for path in client_assets.rglob("*") if path.is_file()]
     self.assertGreaterEqual(len(files), 1, msg="Client asset folder is empty")
 
+  def test_business_hours_and_holiday_closures_are_pinned(self) -> None:
+    canonical = next(
+      payload for payload in json_ld_payloads(ROOT / "index.html") if "LocalBusiness" in type_set(payload)
+    )
+    specs = canonical["openingHoursSpecification"]
+    regular = [spec for spec in specs if "validFrom" not in spec]
+    self.assertEqual(
+      regular,
+      [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "08:00",
+          "closes": "18:00",
+        }
+      ],
+    )
+    closures = [spec for spec in specs if "validFrom" in spec]
+    for spec in closures:
+      self.assertEqual((spec["opens"], spec["closes"]), ("00:00", "00:00"), msg=f"Closure must be 00:00-00:00: {spec}")
+      self.assertEqual(spec["validFrom"], spec["validThrough"], msg=f"Closure must be a single day: {spec}")
+    closed_dates = {spec["validFrom"] for spec in closures}
+    for required in ("2026-11-26", "2026-12-24", "2026-12-25", "2026-12-31"):
+      self.assertIn(required, closed_dates, msg=f"Missing holiday closure {required}")
+
+    site_js = read_text(ROOT / "assets/js/site.js")
+    self.assertIn("Mon-Sat, 8:00 AM to 6:00 PM", site_js)
+    self.assertIn("Lun a Sáb, 8:00 AM a 6:00 PM", site_js)
+    self.assertIn("Mon-Sat, 8 AM-6 PM", read_text(ROOT / "contact.html"))
+    self.assertIn("Lun a Sáb, 8 AM-6 PM", read_text(ROOT / "contacto.html"))
+
 
 if __name__ == "__main__":
   unittest.main()
