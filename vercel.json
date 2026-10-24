@@ -1,5 +1,28 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/garage-flooring-edinburg-tx", "destination": "/edinburg", "permanent": true },
+    { "source": "/garage-flooring-mission-tx", "destination": "/mission", "permanent": true },
+    { "source": "/garage-flooring-brownsville-tx", "destination": "/brownsville", "permanent": true },
+    { "source": "/garage-flooring-harlingen-tx", "destination": "/harlingen", "permanent": true },
+    { "source": "/garage-flooring", "destination": "/garage-floor-coatings", "permanent": true },
+    { "source": "/polished-concrete", "destination": "/concrete-polishing", "permanent": true },
+    { "source": "/acid-stain-floors", "destination": "/concrete-staining", "permanent": true },
+    { "source": "/grind-and-seal", "destination": "/concrete-polishing", "permanent": true },
+    { "source": "/concrete-resurfacing", "destination": "/concrete-polishing", "permanent": true },
+    { "source": "/epoxy-mortar", "destination": "/epoxy-flooring", "permanent": true },
+    { "source": "/100-solids-epoxy", "destination": "/epoxy-flooring", "permanent": true },
+    { "source": "/metallic-epoxy-flooring", "destination": "/epoxy-flooring", "permanent": true },
+    { "source": "/epoxy-flake-flooring", "destination": "/epoxy-flooring", "permanent": true },
+    { "source": "/polyaspartic-one-day-flooring", "destination": "/epoxy-flooring", "permanent": true },
+    { "source": "/urethane-mortar-flooring", "destination": "/epoxy-flooring", "permanent": true },
+    { "source": "/self-leveling", "destination": "/epoxy-flooring", "permanent": true },
+    { "source": "/concrete-floor-repair", "destination": "/services", "permanent": true },
+    { "source": "/color-chart", "destination": "/decorative-coatings", "permanent": true },
+    { "source": "/videos", "destination": "/gallery", "permanent": true },
+    { "source": "/pictures-of-our-work", "destination": "/gallery", "permanent": true },
+    { "source": "/sitemap", "destination": "/", "permanent": true }
+  ]
 }
