@@ -4,6 +4,9 @@ const siteConfig = {
   email: "rgvconcretestain@gmail.com",
   // Formspree endpoint. Every lead form POSTs here via AJAX (see initForms).
   formEndpoint: "https://formspree.io/f/xkoanrop",
+  // Google Analytics 4 Measurement ID, format G-XXXXXXXXXX. Leave empty to keep GA4 off:
+  // nothing loads and no events fire until a real ID is set here (see initAnalytics).
+  ga4MeasurementId: "G-C2KP5P1ZG8",
   serviceArea: [
     "McAllen",
     "Edinburg",
@@ -761,6 +764,7 @@ function initForms() {
           if (response.ok) {
             status.textContent = copy.formSuccess;
             status.className = "lead-form__status is-success";
+            trackEvent("generate_lead", { form_name: payload.form });
             htmlForm.reset();
             syncOtherCity();
             return;
@@ -781,7 +785,49 @@ function initForms() {
   });
 }
 
+// GA4. Sends nothing unless siteConfig.ga4MeasurementId holds a real ID.
+// Analytics must never break the page, so every call here is guarded.
+function trackEvent(name, params) {
+  try {
+    if (typeof window.gtag !== "function") return;
+    window.gtag("event", name, { page_path: window.location.pathname, ...(params || {}) });
+  } catch (error) {
+    // Ignore analytics failures.
+  }
+}
+
+function initAnalytics() {
+  const id = siteConfig.ga4MeasurementId;
+  if (!/^G-[A-Z0-9]{6,}$/.test(id)) return;
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function gtag() {
+    window.dataLayer.push(arguments);
+  };
+  window.gtag("js", new Date());
+  window.gtag("config", id);
+
+  const loader = document.createElement("script");
+  loader.async = true;
+  loader.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`;
+  document.head.appendChild(loader);
+
+  // One delegated listener covers static links and the header, footer and sticky bar
+  // links that this file renders after load.
+  document.addEventListener("click", (event) => {
+    const link = event.target instanceof Element ? event.target.closest('a[href^="tel:"], a[href^="sms:"]') : null;
+    if (!link) return;
+    const isCall = (link.getAttribute("href") || "").startsWith("tel:");
+    trackEvent(isCall ? "call_click" : "sms_click", { link_class: link.className || "inline" });
+  });
+}
+
 function init() {
+  try {
+    initAnalytics();
+  } catch (error) {
+    // Ignore analytics failures.
+  }
   renderSiteHeader();
   renderSiteFooter();
   renderStickyBar();

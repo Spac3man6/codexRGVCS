@@ -355,6 +355,23 @@ class SiteBuildTests(unittest.TestCase):
     self.assertIn("Mon-Sat, 8 AM-6 PM", read_text(ROOT / "contact.html"))
     self.assertIn("Lun a Sáb, 8 AM-6 PM", read_text(ROOT / "contacto.html"))
 
+  def test_ga4_loader_is_gated_and_tracks_lead_events(self) -> None:
+    script = (ROOT / "assets/js/site.js").read_text(encoding="utf-8")
+    match = re.search(r'ga4MeasurementId:\s*"([^"]*)"', script)
+    self.assertIsNotNone(match, msg="siteConfig.ga4MeasurementId is missing")
+    measurement_id = match.group(1)
+    self.assertTrue(
+      measurement_id == "" or re.fullmatch(r"G-[A-Z0-9]{6,}", measurement_id),
+      msg=f"ga4MeasurementId must be empty or a GA4 ID, got {measurement_id!r}",
+    )
+    for event_name in ("generate_lead", "call_click", "sms_click"):
+      self.assertIn(f'"{event_name}"', script, msg=f"GA4 event {event_name} is not wired")
+    for html_file in HTML_FILES:
+      text = html_file.read_text(encoding="utf-8")
+      self.assertNotIn(
+        "googletagmanager.com", text, msg=f"{html_file.name} hardcodes a GA tag; the loader lives in site.js"
+      )
+
 
 if __name__ == "__main__":
   unittest.main()
